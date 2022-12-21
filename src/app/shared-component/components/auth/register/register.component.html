@@ -1,0 +1,264 @@
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container-xl px-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <!-- Basic registration form-->
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header justify-content-center">
+                <h3 class="fw-light my-4" *ngIf="success == false">
+                  Create Account
+                </h3>
+                <h3 class="fw-light my-4" *ngIf="success == true">Welcome!</h3>
+              </div>
+              <div class="card-body">
+                <!-- Registration form-->
+                <form
+                  [formGroup]="registerForm"
+                  (ngSubmit)="registerSubmit()"
+                  *ngIf="success == false"
+                >
+                  <div class="d-block invalid-feedback text-center">
+                    {{ errors.error }}
+                  </div>
+                  <!-- Form Row-->
+                  <div class="row gx-3">
+                    <div class="col-md-6">
+                      <!-- Form Group (first name)-->
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputFirstName"
+                          >First Name</label
+                        >
+                        <input
+                          class="form-control"
+                          id="inputFirstName"
+                          type="text"
+                          placeholder="Enter first name"
+                          formControlName="fname"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <!-- Form Group (last name)-->
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputLastName"
+                          >Last Name</label
+                        >
+                        <input
+                          class="form-control"
+                          id="inputLastName"
+                          type="text"
+                          placeholder="Enter last name"
+                          formControlName="lname"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Form Group (email address)            -->
+                  <div class="row gx-3">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <div class="mb-3">
+                          <label class="small mb-1" for="inputEmailAddress"
+                            >Email</label
+                          >
+                          <input
+                            class="form-control"
+                            id="inputEmailAddress"
+                            type="email"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter email address"
+                            formControlName="email"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputDob">DOB</label>
+                        <input
+                          class="form-control"
+                          id="inputDob"
+                          type="date"
+                          aria-describedby="dateHelp"
+                          placeholder="Enter DOB"
+                          formControlName="dob"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!--Form mobile number -->
+                  <div class="row gx-3">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputMobileNumber"
+                          >Mobile Number</label
+                        >
+                        <input
+                          class="form-control"
+                          id="inputMobileNumber"
+                          type="text"
+                          aria-describedby="maobileHelp"
+                          placeholder="Enter mobile number"
+                          formControlName="mobile"
+                        />
+                      </div>
+                    </div>
+
+                    <!--Form Role -->
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputRole"
+                          >Select Role</label
+                        >
+                        <select class="form-control" formControlName="role">
+                          <option
+                            class="dropdown-item"
+                            selected
+                            disabled
+                            value="undefined"
+                          >
+                            Select an Option
+                          </option>
+                          <option value="patient">Patient</option>
+                          <option value="physician">Physician</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Form Row    -->
+                  <div class="row gx-3">
+                    <div class="col-md-6">
+                      <!-- Form Group (password)-->
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputPassword"
+                          >Password</label
+                        >
+                        <input
+                          class="form-control"
+                          id="inputPassword"
+                          type="password"
+                          placeholder="Enter password"
+                          formControlName="password"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <!-- Form Group (confirm password)-->
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputConfirmPassword"
+                          >Confirm Password</label
+                        >
+                        <input
+                          class="form-control"
+                          id="inputConfirmPassword"
+                          type="password"
+                          placeholder="Confirm password"
+                          formControlName="password2"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Form Row    -->
+                  <div
+                    class="row gx-3"
+                    *ngIf="registerForm.get('role').value == 'physician'"
+                  >
+                    <div class="col-md-6">
+                      <!-- Form Group (speciality)-->
+                      <div class="mb-3">
+                        <label class="small mb-1" for="inputSpeciality"
+                          >Speciality</label
+                        >
+                        <select
+                          class="form-control"
+                          formControlName="speciality"
+                        >
+                          <option
+                            class="dropdown-item"
+                            disabled
+                            selected
+                            value="undefined"
+                          >
+                            Select an Option
+                          </option>
+                          <option value="Allergy and immunology">
+                            Allergy and immunology
+                          </option>
+                          <option value="Anesthesiology">Anesthesiology</option>
+                          <option value="Dermatology">Dermatology</option>
+                          <option value="Diagnostic radiology">
+                            Diagnostic radiology
+                          </option>
+                          <option value="Emergency medicine">
+                            Emergency medicine
+                          </option>
+                          <option value="Family medicine">
+                            Family medicine
+                          </option>
+                          <option value="Internal medicine">
+                            Internal medicine
+                          </option>
+                          <option value="Medical genetics">
+                            Medical genetics
+                          </option>
+                          <option value="Neurology">Neurology</option>
+                          <option value="Nuclear medicine">
+                            Nuclear medicine
+                          </option>
+                          <option value="Obstetrics and gynecology">
+                            Obstetrics and gynecology
+                          </option>
+                          <option value="Ophthalmology">Ophthalmology</option>
+                          <option value="Pathology">Pathology</option>
+                          <option value="Pediatrics">Pediatrics</option>
+                          <option value="Physical medicine and rehabilitation">
+                            Physical medicine and rehabilitation
+                          </option>
+                          <option value="Preventive medicine">
+                            Preventive medicine
+                          </option>
+                          <option value="Psychiatry">Psychiatry</option>
+                          <option value="Radiation oncology">
+                            Radiation oncology
+                          </option>
+                          <option value="Surgery">Surgery</option>
+                          <option value="Urology">Urology</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Form Group (create account submit)-->
+                  <input
+                    type="submit"
+                    class="btn btn-primary"
+                    value="Create Account"
+                  />
+                </form>
+                <div *ngIf="success == true">
+                  You have successfully submitted the form to create a new
+                  account. Admin will verify the details and activate your
+                  account. Click here to go to
+                  <a [routerLink]="['/user/login']">Login page</a>
+                </div>
+                <!-- <div *ngIf="success == true && from == 'admin'">
+                  You have successfully created a new account. Click here to
+                  <a [routerLink]="['/admin']">Login to</a>
+                </div> -->
+              </div>
+              <div class="card-footer text-center" *ngIf="success == false">
+                <div class="small">
+                  <a [routerLink]="['/user/login']"
+                    >Have an account? Go to login</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

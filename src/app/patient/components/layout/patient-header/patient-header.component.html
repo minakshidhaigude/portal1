@@ -1,0 +1,54 @@
+<header
+  class="
+    page-header page-header-compact page-header-light
+    border-bottom
+    bg-white
+    mb-4
+  "
+>
+  <!-- <div class="container-xl px-4">
+
+    <div class="page-header-content">
+
+      <div class="row align-items-center justify-content-between pt-3">
+
+        <div class="col-auto mb-3">
+
+          <h1 class="page-header-title">
+
+            <div class="page-header-icon">
+
+              <i data-feather="activity"></i>
+
+            </div>
+
+            Patient Dashboard
+
+          </h1>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div> -->
+
+  <div class="sidenav-footer">
+    <div class="sidenav-footer-content">
+      <div class="sidenav-footer-subtitle">
+        <div class="sidenav-subtitle bg-primary">
+          <div class="p-2">
+            <h3 class="fw-primary m-auto text-white">
+              Welcome {{ userDetail.fname | titlecase }}
+
+              <br />
+
+              Patient Id :{{ " " + userDetail.id }}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

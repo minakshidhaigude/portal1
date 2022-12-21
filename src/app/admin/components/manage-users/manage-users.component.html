@@ -1,0 +1,69 @@
+<div class="container-fluid px-4">
+  <div class="row" style="margin-bottom: 20px">
+    <div class="col-md-6"></div>
+    <!-- <div class="col-md-6">
+      <a
+        style="float: right"
+        type="button"
+        class="btn btn-primary"
+        [routerLink]="['/register']"
+        routerLinkActive="active"
+        [queryParams]="{ from: 'admin' }"
+      >
+        Create User</a
+      >
+    </div> -->
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+          class="table table-bordered"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>User</th>
+              <th style="background: none">Email</th>
+              <th style="background: none">Role</th>
+              <th>Registration Date</th>
+              <th style="background: none">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of data; index as i">
+              <td>{{ i + 1 }}</td>
+              <td>
+                {{ user.fname + " " + user.lname | titlecase }}
+              </td>
+              <td>
+                <a href="mailto:user.email">{{ user.email }}</a>
+              </td>
+              <td>{{ user.role | titlecase }}</td>
+              <td>{{ user.reg_date | date }}</td>
+              <td>
+                <div class="form-check form-switch">
+                  <input
+                    mdbCheckbox
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                    [(ngModel)]="user.active"
+                    [id]="user.id"
+                    (change)="updateUser(user)"
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

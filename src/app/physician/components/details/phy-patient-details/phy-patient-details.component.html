@@ -1,0 +1,557 @@
+<div class="container-xl px-4">
+  <nav class="nav nav-borders">
+    <a
+      class="nav-link"
+      [routerLink]="['/physician/capture', patientID, appointmentID]"
+      >Capture Details</a
+    >
+    <a
+      class="nav-link active ms-0"
+      [routerLink]="['/physician/patient-details', patientID, appointmentID]"
+      >Patient Details</a
+    >
+    <a
+      class="nav-link"
+      [routerLink]="['/physician/patient-visits', patientID, appointmentID]"
+      >Patient Visits</a
+    >
+  </nav>
+  <hr class="mt-0 mb-4" />
+  <!-- Wizard card example with navigation-->
+</div>
+
+<header
+  class="
+    page-header page-header-compact page-header-light
+    border-bottom
+    bg-white
+    mb-4
+  "
+>
+  <div class="container-xl px-4">
+    <div class="row align-items-center justify-content-between pt-3">
+      <div class="col-auto mb-3">
+        <h6>
+          Patient Name :
+          <span style="color: grey">{{
+            data1.fname + " " + data1.lname | titlecase
+          }}</span>
+        </h6>
+        <h6>
+          Patient Id : <span style="color: grey">#{{ pid }}</span>
+        </h6>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid px-4">
+  <div class="sbp-preview-code">
+    <!-- Code sample-->
+    <ul class="nav nav-tabs" id="badgeExtendedTabs" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active me-1"
+          id="badgeExtendedPugTab"
+          data-bs-toggle="tab"
+          href="#badgeExtendedPug"
+          role="tab"
+          aria-controls="badgeExtendedPug"
+          aria-selected="false"
+        >
+          Demographics
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="badgeExtendedPugMedication"
+          data-bs-toggle="tab"
+          href="#badgeExtendedMedication"
+          role="tab"
+          aria-controls="badgeExtendedMedication"
+          aria-selected="false"
+        >
+          Medication & Allergies
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="badgeExtendedPugImmunization"
+          data-bs-toggle="tab"
+          href="#badgeExtendedImmunization"
+          role="tab"
+          aria-controls="badgeExtendedImmunization"
+          aria-selected="false"
+        >
+          Immunization
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="badgeExtendedEducationTab"
+          data-bs-toggle="tab"
+          href="#badgeExtendedEducation"
+          role="tab"
+          aria-controls="badgeExtendedEducation"
+          aria-selected="false"
+        >
+          Education
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div
+        class="tab-pane active"
+        id="badgeExtendedPug"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedPugTab"
+      >
+        <div class="">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            <!-- <div class="card-header">Patient Details</div> -->
+            <div class="card-body">
+              <form [formGroup]="updatePatientForm">
+                <!-- Form Row-->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group (first name)-->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputFirstName"
+                        >First name</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="fname"
+                        id="inputFirstName"
+                        type="text"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="
+                            updatePatientForm.controls['fname'].errors?.required
+                          "
+                        >
+                          *First name is required
+                        </span> -->
+                    </div>
+                  </div>
+
+                  <!-- Form Group (last name)-->
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputLastName"
+                        >Last name</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="lname"
+                        id="inputLastName"
+                        type="text"
+                        placeholder="Enter your last name"
+                        value="Cox"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="
+                            updatePatientForm.controls['lname'].errors?.required
+                          "
+                        >
+                          *Last name is required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputDob">DOB</label>
+                      <input
+                        class="form-control"
+                        formControlName="pdob"
+                        id="inputDob"
+                        type="date"
+                        aria-describedby="dateHelp"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['pdob'].errors?.required
+                        "
+                      >
+                        *DOB is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1">Gender</label>
+                      <select
+                        class="form-select"
+                        aria-label="gender select"
+                        formControlName="pgender"
+                      >
+                        <!-- <option selected="" disabled="">Select</option> -->
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                      <!-- <span
+                          class="warning"
+                          *ngIf="
+                            updatePatientForm.controls['pgender'].errors
+                              ?.required
+                          "
+                        >
+                          *Gender is required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1">Ethnicity/Race</label>
+                      <select
+                        class="form-select"
+                        aria-label="ethnicity select"
+                        formControlName="pethnicity"
+                      >
+                        <!-- <option disabled="">Select</option> -->
+                        <option value="American">American</option>
+                        <option value="Asian">Asian</option>
+                        <option value="African American">
+                          African American
+                        </option>
+                      </select>
+                      <!-- <span
+                          class="warning"
+                          *ngIf="
+                            updatePatientForm.controls['pethnicity'].errors
+                              ?.required
+                          "
+                        >
+                          *Ethnicity is required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientOccupation"
+                        >Occupation</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="poccupation"
+                        id="patientOccupation"
+                        type="text"
+                        placeholder="Enter your Occupation"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="
+                            updatePatientForm.controls['poccupation'].errors
+                              ?.required
+                          "
+                        >
+                          *Occupation details is required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientAddress"
+                        >Address</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="paddress"
+                        id="patientAddress"
+                        type="textarea"
+                        placeholder="Enter your address"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="
+                            updatePatientForm.controls['paddress'].errors
+                              ?.required
+                          "
+                        >
+                          *Address is required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientContact"
+                        >Contact No</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="pmobileno"
+                        id="patientContact"
+                        type="text"
+                        placeholder="Enter your contact no"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="
+                            updatePatientForm.controls['pmobileno'].errors
+                              ?.required
+                          "
+                        >
+                          *Contact number is required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientHistory"
+                        >Medical History</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="pmedicalhistory"
+                        id="patientHistory"
+                        type="text"
+                        placeholder="Enter your medical history"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="updatePatientForm.controls['pmedicalhistory'"
+                          >].errors?.required"> *Patient medical history is
+                          required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientFamilyHistory"
+                        >Family Medical History</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="fmedicalhistory"
+                        id="patientFamilyHistory"
+                        type="text"
+                        placeholder="Enter your family medical history"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="updatePatientForm.controls['fmedicalhistory'"
+                          >].errors?.required"> *Family medical history is
+                          required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientSurgeries"
+                        >Surgeries</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="psurgeries"
+                        id="patientSurgeries"
+                        type="text"
+                        placeholder="Enter your surgery history"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="updatePatientForm.controls['psurgeries'"
+                          >].errors?.required"> *Surgery details required
+                        </span> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientProvider"
+                        >Insurance Provider</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="pprovider"
+                        id="patientProvider"
+                        type="text"
+                        placeholder="Enter your insurance provider"
+                      />
+                      <!-- <span
+                          class="warning"
+                          *ngIf="updatePatientForm.controls['pprovider'"
+                          >].errors?.required"> *Provider details required
+                        </span> -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit button-->
+                <!-- <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="updatePatientDemographics()"
+                >
+                  Save changes
+                </button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane"
+        id="badgeExtendedMedication"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedMedicationTab"
+      >
+        <div class="">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            <!-- <div class="card-header">Medication & Allergies</div> -->
+            <div class="card-body">
+              <form>
+                <!-- Form Row-->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group (first name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputFirstName"
+                      >First name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputFirstName"
+                      type="text"
+                      placeholder="Enter your first name"
+                      value="Valerie"
+                    />
+                  </div>
+                  <!-- Form Group (last name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputLastName"
+                      >Last name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputLastName"
+                      type="text"
+                      placeholder="Enter your last name"
+                      value="Luna"
+                    />
+                  </div>
+                </div>
+                <!-- Form Group (email address)-->
+
+                <!-- Submit button-->
+                <!-- <button class="btn btn-primary" type="button">
+                  Save changes
+                </button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane"
+        id="badgeExtendedImmunization"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedImmunizationTab"
+      >
+        <div class="">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            <!-- <div class="card-header">Immunization</div> -->
+            <div class="card-body">
+              <form>
+                <!-- Form Row-->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group (first name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputFirstName"
+                      >First name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputFirstName"
+                      type="text"
+                      placeholder="Enter your first name"
+                      value="Valerie"
+                    />
+                  </div>
+                  <!-- Form Group (last name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputLastName"
+                      >Last name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputLastName"
+                      type="text"
+                      placeholder="Enter your last name"
+                      value="Luna"
+                    />
+                  </div>
+                </div>
+                <!-- Form Group (email address)-->
+
+                <!-- Submit button-->
+                <!-- <button class="btn btn-primary" type="button">
+                  Save changes
+                </button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane"
+        id="badgeExtendedEducation"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedEducationTab"
+      >
+        <div class="">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            <!-- <div class="card-header">Education</div> -->
+            <div class="card-body">
+              <form>
+                <!-- Form Row-->
+                <div class="row gx-3 mb-3">
+                  <!-- Form Group (first name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputFirstName"
+                      >First name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputFirstName"
+                      type="text"
+                      placeholder="Enter your first name"
+                      value="Valerie"
+                    />
+                  </div>
+                  <!-- Form Group (last name)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputLastName"
+                      >Last name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputLastName"
+                      type="text"
+                      placeholder="Enter your last name"
+                      value="Luna"
+                    />
+                  </div>
+                </div>
+                <!-- Form Group (email address)-->
+
+                <!-- Submit button-->
+                <!-- <button class="btn btn-primary" type="button">
+                  Save changes
+                </button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

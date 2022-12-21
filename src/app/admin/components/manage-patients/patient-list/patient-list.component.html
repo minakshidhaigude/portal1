@@ -1,0 +1,102 @@
+<div class="container-fluid px-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+          class="table table-bordered"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Patient Name</th>
+              <th style="background-image: none">Contact No</th>
+              <th style="background-image: none">Email Id</th>
+              <th style="background-image: none">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let user of data; index as i">
+              <tr>
+                <td>{{ i+1 }}</td>
+                <td>
+                  {{ user.fname + " " + user.lname | titlecase }}
+                </td>
+                <td>{{ user.mobile }}</td>
+                <td>
+                  <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i
+                      class="fa fa-ellipsis-v"
+                      aria-hidden="true"
+                      style="color: grey"
+                      title="View"
+                    ></i>
+                  </button>
+                  <div
+                    class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a
+                      class="dropdown-item"
+                      [routerLink]="['./patient-view', user.id]"
+                      [queryParams]="{ sidebar: 'Patients Details' }"
+                    >
+                      <div class="dropdown-item-icon">
+                        <i class="text-gray-500" data-feather="list"></i>
+                      </div>
+                      Patient Details
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      [routerLink]="['./patient-appointments', user.id]"
+                      [queryParams]="{ sidebar: 'Appointment Details' }"
+                    >
+                      <div class="dropdown-item-icon">
+                        <i class="text-gray-500" data-feather="plus-circle"></i>
+                      </div>
+                      Appointment Details
+                    </a>
+                  </div>
+
+                  <!-- <a
+                    [routerLink]="['./patient-view', user.id]"
+                    [queryParams]="{ sidebar: 'Patients Details' }"
+                    ><i
+                      class="fa fa-eye"
+                      aria-hidden="true"
+                      style="color: grey"
+                      title="View"
+                    ></i
+                  ></a>
+                  <a
+                    [routerLink]="['./patient-appointments', user.id]"
+                    [queryParams]="{ sidebar: 'Appointment Details' }"
+                    ><i
+                      class="fa fa-eye"
+                      aria-hidden="true"
+                      style="color: grey"
+                      title="View"
+                    ></i
+                  ></a> -->
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

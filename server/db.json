@@ -1,0 +1,681 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "fname": "John2",
+      "lname": "kenndy2",
+      "email": "john2@gmail.com",
+      "password": "123456",
+      "role": "physician",
+      "mobile": "9876543210",
+      "user_active": false
+    },
+    {
+      "id": 3,
+      "fname": "John3",
+      "lname": "kenndy3",
+      "email": "john3@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "mobile": "9876543210"
+    },
+    {
+      "email": "arun@gm.com",
+      "password": "$2a$10$4JBFUCAC4mWBYbpFvKs3aOX3ceHFkErnQc1/YFE6wyikn/j/BwC1O",
+      "fname": "arun",
+      "lname": "sr",
+      "password2": "123456",
+      "dob": "2021-09-02",
+      "mobile": "1234567890",
+      "role": "patient",
+      "id": 4
+    },
+    {
+      "email": "vishwas@gm.com",
+      "password": "$2a$10$hlSHmrz0qhWnzx.Oq0W2vO9arRWQXaIqDno4L2qzuSMDkafEGpGsW",
+      "fname": "vishwas",
+      "lname": "vish",
+      "password2": "123456",
+      "dob": "2021-08-29",
+      "mobile": "1234567890",
+      "role": "physician",
+      "id": 5
+    },
+    {
+      "email": "nitin@gm.com",
+      "password": "$2a$10$dKceh/zplOwSop9ukUMlseSgZG6atPBAE71qe2WGWm6OXwWFETSOG",
+      "fname": "nitin",
+      "lname": "ni",
+      "password2": "123456",
+      "dob": "2021-09-03",
+      "mobile": "1234567890",
+      "role": "admin",
+      "id": 6
+    },
+    {
+      "email": "arun2@gm.com",
+      "password": "$2a$10$mjJI0mhQefd.ozCn/4zJGe/OBmhZthluCpmuvU13zump7cN6nULqy",
+      "fname": "",
+      "lname": "",
+      "password2": "",
+      "dob": "",
+      "mobile": "",
+      "role": "",
+      "id": 7
+    },
+    {
+      "email": "ok@k.com",
+      "password": "$2a$10$uGMb7T7VML9lbXFJhH3FtemcQCjbuvyGwAeel5QDuGCo6Ds5cXTIe",
+      "fname": "",
+      "lname": "",
+      "password2": "",
+      "dob": "",
+      "mobile": "",
+      "role": "",
+      "id": 8
+    },
+    {
+      "email": "arun3@gm.com",
+      "password": "$2a$10$SXYNb10v62uxEQFqomw7I..fWflJ1a35ZRlYETgRwZ.yDb1KdaLma",
+      "fname": "arun3",
+      "lname": "sr3",
+      "password2": "123456",
+      "dob": "2021-09-01",
+      "mobile": "1234567890",
+      "role": "physician",
+      "id": 9
+    },
+    {
+      "email": "jin@hm.com",
+      "password": "$2a$10$CwGwMAPP2NA9ctAtlB.0y.zJGd9FbNIeDoivtDqLIexNSiGz.07Ki",
+      "fname": "jin",
+      "lname": "jan",
+      "password2": "123456",
+      "dob": "1998-07-10",
+      "mobile": "1234567890",
+      "role": "patient",
+      "id": 10
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "physicianid": 5,
+      "patientid": 10,
+      "patientname": "jin jan",
+      "phone": "1234567890",
+      "age": "29",
+      "date": "14-09-2021",
+      "time": "9 AM",
+      "apptype": "WalkIn",
+      "status": "completed"
+    },
+    {
+      "id": 2,
+      "physicianid": 5,
+      "patientid": 4,
+      "patientname": "arun sr",
+      "phone": "1234567890",
+      "age": "26",
+      "date": "14-09-2021",
+      "time": "10 AM",
+      "apptype": "WalkIn",
+      "status": "completed"
+    },
+    {
+      "physicianid": 2,
+      "patientid": 4,
+      "patientname": "arun sr",
+      "phone": "1234567890",
+      "age": "26",
+      "date": "14-09-2021",
+      "time": "10 AM",
+      "apptype": "WalkIn",
+      "status": "completed",
+      "id": 3
+    },
+    {
+      "physicianid": 2,
+      "patientid": 4,
+      "patientname": "arun sr",
+      "phone": "1234567890",
+      "age": "26",
+      "date": "14-09-2021",
+      "time": "10 AM",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "physicianid": 5,
+      "patientid": 4,
+      "patientname": "arun sr",
+      "phone": "1234567890",
+      "age": "26",
+      "date": "14-09-2021",
+      "time": "10 AM",
+      "apptype": "WalkIn",
+      "status": "completed",
+      "id": 5
+    },
+    {
+      "physicianid": 5,
+      "patientid": 4,
+      "patientname": "arun sr",
+      "phone": "1234567890",
+      "age": "26",
+      "date": "14-09-2021",
+      "time": "10 AM",
+      "apptype": "WalkIn",
+      "status": "completed",
+      "id": 6
+    },
+    {
+      "physicianid": 5,
+      "patientid": 4,
+      "patientname": "arun sr",
+      "phone": "1234567890",
+      "age": "26",
+      "date": "14-09-2021",
+      "time": "10 AM",
+      "apptype": "WalkIn",
+      "status": "completed",
+      "id": 7
+    },
+    {
+      "physicianid": 5,
+      "patientid": 10,
+      "patientname": "jin jan",
+      "phone": "1234567890",
+      "age": "29",
+      "date": "14-09-2021",
+      "time": "9 AM",
+      "apptype": "WalkIn",
+      "status": "completed",
+      "id": 8
+    },
+    {
+      "physicianid": 5,
+      "patientid": 10,
+      "patientname": "jin jan",
+      "phone": "1234567890",
+      "age": "29",
+      "date": "14-09-2021",
+      "time": "9 AM",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "id": 9
+    },
+    {
+      "physicianid": 5,
+      "patientid": 4,
+      "patientname": "arun sr",
+      "phone": "1234567890",
+      "age": "29",
+      "date": "14-09-2021",
+      "time": "9 AM",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "id": 10
+    },
+    {
+      "patientid": 4,
+      "patientname": "arunsr",
+      "phone": "1234567890",
+      "age": "",
+      "time": "",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "date": 1632810600000,
+      "physicianid": 5,
+      "id": 11
+    },
+    {
+      "patientid": 4,
+      "patientname": "arunsr",
+      "phone": "1234567890",
+      "age": "",
+      "time": "",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "date": 1632853800000,
+      "physicianid": 2,
+      "id": 12
+    },
+    {
+      "patientid": 4,
+      "patientname": "arunsr",
+      "phone": "1234567890",
+      "age": "",
+      "time": "",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "date": 1632940200000,
+      "physicianid": 2,
+      "id": 13
+    },
+    {
+      "patientid": 4,
+      "patientname": "arunsr",
+      "phone": "1234567890",
+      "age": "",
+      "time": "",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "date": 1632940200000,
+      "physicianid": 5,
+      "id": 14
+    },
+    {
+      "patientid": 4,
+      "patientname": "arunsr",
+      "phone": "1234567890",
+      "age": "",
+      "time": "",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "date": "2021-09-30 00:00:00",
+      "date1": 1632940200000,
+      "physicianid": 5,
+      "id": 15
+    },
+    {
+      "patientid": 4,
+      "patientname": "arunsr",
+      "phone": "1234567890",
+      "age": "",
+      "time": "",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "date": "2021-09-30 08:00",
+      "date1": 1632969000000,
+      "physicianid": 5,
+      "id": 16
+    },
+    {
+      "patientid": 4,
+      "patientname": "arunsr",
+      "phone": "1234567890",
+      "age": "",
+      "time": "",
+      "apptype": "WalkIn",
+      "status": "pending",
+      "date": "2021-09-30 23:00",
+      "physicianid": 5,
+      "id": 17
+    }
+  ],
+  "orders": [
+    {
+      "vitals": {
+        "bloodpressure": "120",
+        "pulse": "95",
+        "temperature": "96",
+        "respiration": "70",
+        "height": "5.6",
+        "weight": "65"
+      },
+      "procedures": [
+        "123",
+        "123"
+      ],
+      "diagnosis": [
+        "456",
+        "457"
+      ],
+      "medications": [
+        {
+          "medication": "dolo",
+          "dose": "650",
+          "frequency": "1-1-1",
+          "days": "5",
+          "notes": "test notes"
+        },
+        {
+          "medication": "crocin",
+          "dose": "650",
+          "frequency": "1-0-1",
+          "days": "2",
+          "notes": "test1"
+        }
+      ],
+      "patientId": "10",
+      "appointmentId": "1",
+      "id": 1
+    },
+    {
+      "vitals": {
+        "bloodpressure": "33",
+        "pulse": "443",
+        "temperature": "87",
+        "respiration": "100",
+        "height": "5",
+        "weight": "60"
+      },
+      "procedures": [
+        "123pro",
+        "124pro"
+      ],
+      "diagnosis": [
+        "dio123",
+        "dio124"
+      ],
+      "medications": [
+        {
+          "medication": "dolo",
+          "dose": "650",
+          "frequency": "1-1-1",
+          "days": "6",
+          "notes": "test"
+        },
+        {
+          "medication": "crocin",
+          "dose": "650",
+          "frequency": "1-1-1",
+          "days": "2",
+          "notes": "test1"
+        }
+      ],
+      "patientId": "4",
+      "appointmentId": "2",
+      "id": 2
+    },
+    {
+      "vitals": {
+        "bloodpressure": "1202",
+        "pulse": "342343432",
+        "temperature": "434",
+        "respiration": "ewrwe",
+        "height": "55",
+        "weight": "535"
+      },
+      "procedures": [
+        "121",
+        "123123",
+        "213213"
+      ],
+      "diagnosis": [
+        "23123",
+        "213213"
+      ],
+      "medications": [
+        {
+          "medication": "dolo",
+          "dose": "123",
+          "frequency": "1-1-1",
+          "days": "3",
+          "notes": "tweyywf"
+        },
+        {
+          "medication": "fefwef",
+          "dose": "321",
+          "frequency": "213",
+          "days": "32dsf",
+          "notes": "dsfdsf"
+        }
+      ],
+      "patientId": "4",
+      "appointmentId": "5",
+      "id": 3
+    },
+    {
+      "vitals": {
+        "bloodpressure": "dfsdf",
+        "pulse": "fdsfsdf",
+        "temperature": "",
+        "respiration": "",
+        "height": "dfsf",
+        "weight": "fdsf"
+      },
+      "procedures": [
+        "sdff"
+      ],
+      "diagnosis": [
+        "fsdf"
+      ],
+      "medications": [
+        {
+          "medication": "dsfdsf",
+          "dose": "fdsfdfs",
+          "frequency": "sfdsfdf",
+          "days": "fdsf",
+          "notes": "dsfdsf"
+        }
+      ],
+      "patientId": "4",
+      "appointmentId": "6",
+      "id": 4
+    },
+    {
+      "vitals": {
+        "bloodpressure": "dfsdf",
+        "pulse": "fdsfdsf",
+        "temperature": "",
+        "respiration": "",
+        "height": "",
+        "weight": ""
+      },
+      "procedures": [
+        "fdsfsdfdsf"
+      ],
+      "diagnosis": [
+        "dfdf"
+      ],
+      "medications": [
+        {
+          "medication": "fdsfdsfds",
+          "dose": "sfdd",
+          "frequency": "",
+          "days": "",
+          "notes": ""
+        }
+      ],
+      "patientId": "4",
+      "appointmentId": "7",
+      "id": 5
+    },
+    {
+      "vitals": {
+        "bloodpressure": "fsdfdsf",
+        "pulse": "sdfdsf",
+        "temperature": "",
+        "respiration": "",
+        "height": "",
+        "weight": ""
+      },
+      "procedures": [
+        ""
+      ],
+      "diagnosis": [
+        ""
+      ],
+      "medications": [
+        {
+          "medication": "test",
+          "dose": "test",
+          "frequency": "",
+          "days": "",
+          "notes": ""
+        }
+      ],
+      "patientId": "4",
+      "appointmentId": "7",
+      "id": 6
+    },
+    {
+      "vitals": {
+        "bloodpressure": "test",
+        "pulse": "test1",
+        "temperature": "",
+        "respiration": "",
+        "height": "",
+        "weight": ""
+      },
+      "procedures": [
+        "wewe"
+      ],
+      "diagnosis": [
+        "qewqeq"
+      ],
+      "medications": [
+        {
+          "medication": "adssad",
+          "dose": "sadsad",
+          "frequency": "",
+          "days": "",
+          "notes": ""
+        }
+      ],
+      "patientId": "4",
+      "appointmentId": "7",
+      "id": 7
+    },
+    {
+      "vitals": {
+        "bloodpressure": "testing123",
+        "pulse": "testing245",
+        "temperature": "",
+        "respiration": "",
+        "height": "",
+        "weight": ""
+      },
+      "procedures": [
+        "test123"
+      ],
+      "diagnosis": [
+        "test245"
+      ],
+      "medications": [
+        {
+          "medication": "testdolo",
+          "dose": "",
+          "frequency": "",
+          "days": "",
+          "notes": ""
+        }
+      ],
+      "patientId": "10",
+      "appointmentId": "8",
+      "id": 8
+    },
+    {
+      "vitals": {
+        "bloodpressure": "120/80",
+        "pulse": "90",
+        "temperature": "96",
+        "respiration": "20",
+        "height": "5.6",
+        "weight": "69"
+      },
+      "diagnosis": [
+        "C9150 - Adult T-cell lymph/leuk (HTLV-1-assoc) not achieve remission",
+        "I70544 Athscl nonaut bio bypass of left leg w ulc of heel and midft"
+      ],
+      "procedures": [
+        "0016071 Bypass Cerebral Ventricle to Mastoid Sinus with Autologous Tissue Substitute, Open Approach",
+        "001U376 Bypass Spinal Canal to Peritoneal Cavity with Autologous Tissue Substitute, Percutaneous Approach",
+        "00514ZZ Destruction of Cerebral Meninges, Percutaneous Endoscopic Approach"
+      ],
+      "medications": [
+        {
+          "medication": "dolo",
+          "dose": "650",
+          "frequency": "1-1-1",
+          "days": "4",
+          "notes": "test"
+        },
+        {
+          "medication": "crocin",
+          "dose": "200",
+          "frequency": "1-1-1",
+          "days": "2",
+          "notes": "test1"
+        }
+      ],
+      "patientId": "4",
+      "appointmentId": "6",
+      "id": 9
+    }
+  ],
+  "patient": [
+    {
+      "id": "4",
+      "demographics": {
+        "fname": "arun",
+        "lname": "sr",
+        "pdob": "2012-10-11",
+        "pgender": "male",
+        "pethnicity": "Asian",
+        "poccupation": "jkgjj",
+        "paddress": "jkhu",
+        "pmobileno": "5667890456",
+        "fmedicalhistory": "djsfh",
+        "pmedicalhistory": "jhfu",
+        "psurgeries": "jhj",
+        "pprovider": "bj"
+      },
+      "medicationallergies": {
+        "currentMedication": "xyz",
+        "otcmedication": [
+          {
+            "date": "xyz"
+          }
+        ],
+        "herbs": "xyz",
+        "socialDrugs": "xyz",
+        "pastprescribedmedication": "xyz",
+        "drugAllergies": "xyzr",
+        "allergies": "xyz"
+      },
+      "immunization": {
+        "vaccinename": "covid",
+        "vaccinedate": "20/12/2021",
+        "gvaccinename": "xyz",
+        "gvaccinedate": "20/12/2021"
+      }
+    }
+  ],
+  "diagnosiscodes": [
+    {
+      "codes": [
+        "A1814 - Tuberculosis of prostate",
+        "C9150 - Adult T-cell lymph/leuk (HTLV-1-assoc) not achieve remission",
+        "C9151 - Adult T-cell lymphoma/leukemia (HTLV-1-assoc), in remission",
+        "C9152 - Adult T-cell lymphoma/leukemia (HTLV-1-assoc), in relapse",
+        "F015 - Vascular dementia without behavioral disturbance",
+        "F0151 - Vascular dementia with behavioral disturbance",
+        "F0390 - Unspecified dementia without behavioral disturbance",
+        "I70539 Athscl nonaut bio bypass of right leg w ulcer of unsp site",
+        "I70541 Athscl nonaut bio bypass of the left leg w ulcer of thigh",
+        "70538 Athscl nonaut bio bypass of r leg w ulcer oth prt low leg",
+        "I70542 Athscl nonaut bio bypass of the left leg w ulcer of calf",
+        "I70543 Athscl nonaut bio bypass of the left leg w ulcer of ankle",
+        "I70544 Athscl nonaut bio bypass of left leg w ulc of heel and midft",
+        "I70545 Athscl nonaut bio bypass of left leg w ulcer oth prt foot"
+      ]
+    }
+  ],
+  "procedurecodes": [
+    {
+      "codes": [
+        "0016070 Bypass Cerebral Ventricle to Nasopharynx with Autologous Tissue Substitute, Open Approach",
+        "0016071 Bypass Cerebral Ventricle to Mastoid Sinus with Autologous Tissue Substitute, Open Approach",
+        "0016072 Bypass Cerebral Ventricle to Atrium with Autologous Tissue Substitute, Open Approach",
+        "0016073 Bypass Cerebral Ventricle to Blood Vessel with Autologous Tissue Substitute, Open Approach",
+        "0016074 Bypass Cerebral Ventricle to Pleural Cavity with Autologous Tissue Substitute, Open Approach",
+        "001U0K7 Bypass Spinal Canal to Urinary Tract with Nonautologous Tissue Substitute, Open Approach",
+        "001U0K9 Bypass Spinal Canal to Fallopian Tube with Nonautologous Tissue Substitute, Open Approach",
+        "001U372 Bypass Spinal Canal to Atrium with Autologous Tissue Substitute, Percutaneous Approach",
+        "001U374 Bypass Spinal Canal to Pleural Cavity with Autologous Tissue Substitute, Percutaneous Approach",
+        "001U376 Bypass Spinal Canal to Peritoneal Cavity with Autologous Tissue Substitute, Percutaneous Approach",
+        "001U377 Bypass Spinal Canal to Urinary Tract with Autologous Tissue Substitute, Percutaneous Approach",
+        "001U379 Bypass Spinal Canal to Fallopian Tube with Autologous Tissue Substitute, Percutaneous Approach",
+        "00510ZZ Destruction of Cerebral Meninges, Open Approach",
+        "00513ZZ Destruction of Cerebral Meninges, Percutaneous Approach",
+        "00514ZZ Destruction of Cerebral Meninges, Percutaneous Endoscopic Approach",
+        "00520ZZ Destruction of Dura Mater, Open Approach",
+        "00523ZZ Destruction of Dura Mater, Percutaneous Approach"
+      ]
+    }
+  ]
+}

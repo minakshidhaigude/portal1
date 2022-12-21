@@ -1,0 +1,233 @@
+<header
+  class="
+    page-header page-header-compact page-header-light
+    border-bottom
+    bg-white
+    mb-4
+  "
+>
+  <div class="container-xl px-4">
+    <div class="row align-items-center justify-content-between pt-3">
+      <div class="col-auto mb-3">
+        <h6>
+          Patient Name :
+          <span style="color: grey">{{ patientName | titlecase }}</span>
+        </h6>
+        <h6>
+          Patient Id : <span style="color: grey">#{{ pid }}</span>
+        </h6>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid px-4">
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="container-fluid px-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table
+                datatable
+                [dtOptions]="dtOptions"
+                [dtTrigger]="dtTrigger"
+                class="table table-bordered"
+                cellspacing="0"
+                width="100%"
+              >
+                <thead>
+                  <tr>
+                    <th>App Id</th>
+                    <th>Treatment Date</th>
+                    <th style="background-image: none">App type</th>
+                    <th style="background-image: none">App time</th>
+                    <th style="background-image: none">Status</th>
+                    <th style="background-image: none">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container
+                    *ngFor="let appointment of appointments; index as i"
+                  >
+                    <tr>
+                      <td>{{ appointment.id }}</td>
+                      <td>{{ appointment.date }}</td>
+                      <td style="background-image: none">
+                        {{ appointment.apptype | titlecase }}
+                      </td>
+                      <td>
+                        {{ appointment.time }}
+                      </td>
+                      <td
+                        class="text-green"
+                        *ngIf="appointment.status == 'completed'"
+                      >
+                        {{ appointment.status | titlecase }}
+                      </td>
+                      <td
+                        class="text-red"
+                        *ngIf="appointment.status == 'Pending'"
+                      >
+                        {{ appointment.status | titlecase }}
+                      </td>
+                      <td>
+                        <button
+                          *ngIf="appointment.status == 'completed'"
+                          style="border: none; background: none"
+                          (click)="getVitals(appointment)"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModali"
+                        >
+                          <i
+                            class="fa fa-eye"
+                            aria-hidden="true"
+                            style="color: grey"
+                            title="Vitals"
+                          ></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="exampleModali"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #d1e8ff">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Appointment Summary
+
+            <br /><span style="font-size: 14px"
+              >Physician:
+              <span style="color: grey">{{
+                physicianName | titlecase
+              }}</span></span
+            >
+          </h5>
+
+          <button
+            class="btn-close"
+            type="button"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" *ngIf="edited == false">
+          <div class="row">
+            <div class="col-md-12">
+              <h6 style="text-align: center">No Vitals</h6>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body" *ngIf="edited == true">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-header">Vital Reports</div>
+
+                <div class="list-group list-group-flush small">
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-stethoscope fa-fw text-pink me-2"></i>
+                    BP : {{ bloodPressure }} mmHg
+                  </div>
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-ruler fa-fw text-purple me-2"></i>
+                    Height : {{ height }} cm
+                  </div>
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-weight fa-fw text-green me-2"></i>
+                    Weight : {{ weight }} kg
+                  </div>
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-thermometer fa-fw text-yellow me-2"></i>
+                    Temperature : {{ temperature }} °F
+                  </div>
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-lungs fa-fw text-blue me-2"></i>
+                    Respiration : {{ respiration }} bpm
+                  </div>
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-heartbeat fa-fw text-red me-2"></i>
+                    Pulse : {{ pulse }} bpm
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-header">Diagnosis Reports</div>
+                <div
+                  class="list-group list-group-flush small"
+                  *ngFor="let item of diagnosis"
+                >
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-diagnoses fa-fw text-yellow me-2"></i>
+                    {{ item }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-header">Procedure Reports</div>
+                <div
+                  class="list-group list-group-flush small"
+                  *ngFor="let item of procedures"
+                >
+                  <div class="list-group-item list-group-item-action">
+                    <i class="fas fa-diagnoses fa-fw text-purple me-2"></i>
+                    {{ item }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-header">Medications</div>
+                <div class="list-group list-group-flush small">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr style="font-weight: bold">
+                          <td>Medicine</td>
+                          <td>Dose</td>
+                          <td>Frequency</td>
+                          <td>Days</td>
+                          <td>Notes</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let medicine of medicines">
+                          <td>{{ medicine.medication }}</td>
+                          <td>{{ medicine.dose }}</td>
+                          <td>{{ medicine.frequency }}</td>
+                          <td>{{ medicine.days }}</td>
+                          <td>{{ medicine.notes }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

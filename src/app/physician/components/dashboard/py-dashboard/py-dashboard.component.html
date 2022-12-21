@@ -1,0 +1,95 @@
+<div class="container-xl px-4">
+  <!-- Appointments List -->
+  <!-- <button (click)="refresh()">refresh</button> -->
+  <div class="card mb-4">
+    <div class="card-header">Appointments</div>
+    <div class="card-body">
+      <table id="datatablesSimple">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>MRN</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>App Date / Time</th>
+            <th>App Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>MRN</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>App Date / Time</th>
+            <th>App Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr *ngFor="let app of myappointments">
+            <td>{{ app.patientname }}</td>
+            <td>MRN{{ app.patientid }}</td>
+            <td>{{ app.phone }}</td>
+            <td>{{ app.age }}</td>
+            <td>{{ app.date }} / {{ app.time }}</td>
+            <td>{{ app.apptype }}</td>
+            <td>
+              <div
+                *ngIf="app.status == 'completed'; else pendingDisplay"
+                class="badge bg-primary text-white rounded-pill"
+              >
+                Completed
+              </div>
+              <ng-template #pendingDisplay
+                ><div class="badge bg-warning text-white rounded-pill">
+                  Pending
+                </div></ng-template
+              >
+            </td>
+            <td>
+              <button
+                class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                id="dropdownMenuButton"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i data-feather="more-vertical"></i>
+              </button>
+              <div
+                class="dropdown-menu dropdown-menu-end animated--fade-in-up"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <a
+                  *ngIf="app.status != 'completed'"
+                  class="dropdown-item"
+                  [routerLink]="['../capture', app.patientid, app.id]"
+                >
+                  <div class="dropdown-item-icon">
+                    <i class="text-gray-500" data-feather="list"></i>
+                  </div>
+                  Capture Details
+                </a>
+                <!-- <a class="dropdown-item" href="/phy-patient-details.html">
+                  <div class="dropdown-item-icon">
+                    <i class="text-gray-500" data-feather="plus-circle"></i>
+                  </div>
+                  Patient Details
+                </a> -->
+              </div>
+
+              <!-- <button class="btn btn-datatable btn-icon btn-transparent-dark">
+                <i data-feather="trash-2"></i>
+              </button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

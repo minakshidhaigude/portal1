@@ -1,0 +1,228 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "fname": "John2",
+      "lname": "kenndy2",
+      "email": "john2@gmail.com",
+      "password": "123456",
+      "role": "physician",
+      "mobile": "9876543210"
+    },
+    {
+      "id": 3,
+      "fname": "John3",
+      "lname": "kenndy3",
+      "email": "john3@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "mobile": "9876543210"
+    },
+    {
+      "email": "arun@gm.com",
+      "password": "$2a$10$4JBFUCAC4mWBYbpFvKs3aOX3ceHFkErnQc1/YFE6wyikn/j/BwC1O",
+      "fname": "arun",
+      "lname": "sr",
+      "password2": "123456",
+      "dob": "2021-09-02",
+      "mobile": "1234567890",
+      "role": "patient",
+      "id": 4
+    },
+    {
+      "email": "vishwas@gm.com",
+      "password": "$2a$10$hlSHmrz0qhWnzx.Oq0W2vO9arRWQXaIqDno4L2qzuSMDkafEGpGsW",
+      "fname": "vishwas",
+      "lname": "vish",
+      "password2": "123456",
+      "dob": "2021-08-29",
+      "mobile": "1234567890",
+      "role": "physician",
+      "id": 5
+    },
+    {
+      "email": "nitin@gm.com",
+      "password": "$2a$10$dKceh/zplOwSop9ukUMlseSgZG6atPBAE71qe2WGWm6OXwWFETSOG",
+      "fname": "nitin",
+      "lname": "ni",
+      "password2": "123456",
+      "dob": "2021-09-03",
+      "mobile": "1234567890",
+      "role": "admin",
+      "id": 6
+    },
+    {
+      "email": "arun2@gm.com",
+      "password": "$2a$10$mjJI0mhQefd.ozCn/4zJGe/OBmhZthluCpmuvU13zump7cN6nULqy",
+      "fname": "",
+      "lname": "",
+      "password2": "",
+      "dob": "",
+      "mobile": "",
+      "role": "",
+      "id": 7
+    },
+    {
+      "email": "ok@k.com",
+      "password": "$2a$10$uGMb7T7VML9lbXFJhH3FtemcQCjbuvyGwAeel5QDuGCo6Ds5cXTIe",
+      "fname": "",
+      "lname": "",
+      "password2": "",
+      "dob": "",
+      "mobile": "",
+      "role": "",
+      "id": 8
+    },
+    {
+      "email": "arun3@gm.com",
+      "password": "$2a$10$SXYNb10v62uxEQFqomw7I..fWflJ1a35ZRlYETgRwZ.yDb1KdaLma",
+      "fname": "arun3",
+      "lname": "sr3",
+      "password2": "123456",
+      "dob": "2021-09-01",
+      "mobile": "1234567890",
+      "role": "physician",
+      "id": 9
+    },
+    {
+      "email": "jin@hm.com",
+      "password": "$2a$10$CwGwMAPP2NA9ctAtlB.0y.zJGd9FbNIeDoivtDqLIexNSiGz.07Ki",
+      "fname": "jin",
+      "lname": "jan",
+      "password2": "123456",
+      "dob": "1998-07-10",
+      "mobile": "1234567890",
+      "role": "patient",
+      "id": 10
+    }
+  ],
+  "appointments": [
+    {
+      "id": 5,
+      "myapointments": [
+        {
+          "patientid": 10,
+          "patientname": "jin jan",
+          "phone": "1234567890",
+          "age": "29",
+          "date": "14-09-2021",
+          "time": "9 AM",
+          "apptype": "WalkIn",
+          "status": "pending"
+        },
+        {
+          "patientid": 4,
+          "patientname": "arun sr",
+          "phone": "1234567890",
+          "age": "26",
+          "date": "14-09-2021",
+          "time": "10 AM",
+          "apptype": "WalkIn",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "vitals": {
+        "bloodpressure": "",
+        "pulse": "",
+        "temperature": "",
+        "respiration": "",
+        "height": "",
+        "weight": ""
+      },
+      "procedures": [
+        ""
+      ],
+      "diagnosis": [
+        ""
+      ],
+      "medications": [
+        {
+          "medication": "",
+          "dose": "",
+          "frequency": "",
+          "days": "",
+          "notes": ""
+        }
+      ],
+      "patientId": "10",
+      "id": 1
+    },
+    {
+      "vitals": {
+        "bloodpressure": "123",
+        "pulse": "12",
+        "temperature": "98",
+        "respiration": "122",
+        "height": "5.6",
+        "weight": "69"
+      },
+      "procedures": [
+        "pro1",
+        "pro2"
+      ],
+      "diagnosis": [
+        "diag1",
+        "diag2"
+      ],
+      "medications": [
+        {
+          "medication": "dolo",
+          "dose": "650",
+          "frequency": "1-1-1",
+          "days": "3",
+          "notes": "After Food"
+        },
+        {
+          "medication": "crocin",
+          "dose": "200",
+          "frequency": "1-0-1",
+          "days": "2",
+          "notes": "af"
+        }
+      ],
+      "patientId": "10",
+      "id": 2
+    },
+    {
+      "vitals": {
+        "bloodpressure": "120",
+        "pulse": "30",
+        "temperature": "96",
+        "respiration": "100",
+        "height": "5.6",
+        "weight": "65"
+      },
+      "procedures": [
+        "123",
+        "234",
+        "13123"
+      ],
+      "diagnosis": [
+        "123213",
+        "213213"
+      ],
+      "medications": [
+        {
+          "medication": "dolo",
+          "dose": "650",
+          "frequency": "1-1-1",
+          "days": "10",
+          "notes": "dhgghdwe"
+        },
+        {
+          "medication": "test",
+          "dose": "200",
+          "frequency": "1-0-1",
+          "days": "12",
+          "notes": "sdsadas"
+        }
+      ],
+      "patientId": "10",
+      "id": 3
+    }
+  ]
+}

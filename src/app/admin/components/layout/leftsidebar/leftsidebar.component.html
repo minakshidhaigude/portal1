@@ -1,0 +1,86 @@
+<!-- LEFT SIDE BAR -->
+<div id="layoutSidenav_nav">
+  <nav class="sidenav shadow-right sidenav-light">
+    <div class="sidenav-menu">
+      <div class="nav accordion" id="accordionSidenav">
+        <!-- Sidenav Menu Heading (Account)-->
+        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
+        <div class="sidenav-menu-heading d-sm-none">Account</div>
+        <!-- Sidenav Link (Alerts)-->
+        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
+        <a class="nav-link d-sm-none" href="#!">
+          <div class="nav-link-icon"><i data-feather="bell"></i></div>
+          Alerts
+          <span class="badge bg-warning-soft text-warning ms-auto">4 New!</span>
+        </a>
+
+        <!-- Sidenav Menu Heading (Core)-->
+        <div class="sidenav-menu-heading"></div>
+        <!-- Sidenav Accordion (Dashboard)-->
+        <a
+          class="nav-link"
+          [routerLink]="['./admin-dashboard']"
+          routerLinkActive="active"
+          [queryParams]="{ sidebar: 'Admin Dashboard' }"
+        >
+          <div class="nav-link-icon">
+            <i data-feather="activity" routerLinkActive="active"></i>
+          </div>
+          Dashboard
+        </a>
+        <a
+          class="nav-link"
+          [routerLink]="['./manage-users']"
+          routerLinkActive="active"
+          [queryParams]="{ sidebar: 'Manage Users' }"
+        >
+          <div class="nav-link-icon"><i data-feather="user"></i></div>
+          Manage Users
+        </a>
+        <a
+          class="nav-link"
+          [routerLink]="['./manage-patients']"
+          routerLinkActive="active"
+          [queryParams]="{ sidebar: 'Manage Patients' }"
+        >
+          <div class="nav-link-icon">
+            <i class="fa fa-hospital-user" aria-hidden="true"></i>
+          </div>
+          Manage Patients
+        </a>
+        <a
+          class="nav-link"
+          [routerLink]="['./manage-physicians']"
+          routerLinkActive="active"
+          [queryParams]="{ sidebar: 'Manage Physicians' }"
+        >
+          <div class="nav-link-icon">
+            <i class="fa fa-medkit" aria-hidden="true"></i>
+          </div>
+          Manage Physicians
+        </a>
+        <a
+          class="nav-link"
+          [routerLink]="['./manage-appointments']"
+          routerLinkActive="active"
+          [queryParams]="{ sidebar: 'Manage Appointments' }"
+        >
+          <div class="nav-link-icon">
+            <i class="fa fa-calendar-check" aria-hidden="true"></i>
+          </div>
+          Manage Appointments
+        </a>
+      </div>
+    </div>
+    <!-- Sidenav Footer-->
+    <div class="sidenav-footer">
+      <div class="sidenav-footer-content">
+        <div class="sidenav-footer-subtitle">Logged in as:</div>
+        <div class="sidenav-footer-title">
+          {{ userDetail.fname }} {{ userDetail.lname }}
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- Left Sidebar Ends here -->

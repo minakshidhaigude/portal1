@@ -1,0 +1,42 @@
+.rounded {
+  border-radius: 1rem;
+}
+
+.select-row:hover {
+  cursor: pointer;
+  background: rgb(228, 225, 225);
+}
+
+.container-xl {
+  padding-top: 10%;
+}
+
+@media print {
+  * {
+    visibility: hidden;
+  }
+  #toBePrinted,
+  #toBePrinted * {
+    visibility: visible;
+  }
+  button {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.nav-pills .nav-link {
+  color: #555;
+}
+
+.nav-pills .nav-link.active {
+  color: white;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+.bold {
+  font-weight: bold;
+}

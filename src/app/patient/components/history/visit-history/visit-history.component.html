@@ -1,0 +1,183 @@
+<div class="container-xl px-4">
+  <hr class="mt-0 mb-4" />
+  <!-- Wizard card example with navigation-->
+</div>
+
+<div class="container-xl px-4">
+  <!-- Appointments List -->
+  <!-- <button (click)="refresh()">refresh</button> -->
+  <div class="card mb-4">
+    <div class="card-header">Calender</div>
+    <div class="card-body table-responsive table-bordered">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>MRN</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>App Date / Time</th>
+            <th>App Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>MRN</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>App Date / Time</th>
+            <th>App Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr *ngFor="let app of mylastappointments">
+            <td>{{ app.patientname }}</td>
+            <td>MRN{{ app.patientid }}</td>
+            <td>{{ app.phone }}</td>
+            <td>{{ app.age }}</td>
+            <td>{{ app.date }} / {{ app.time }}</td>
+            <td>{{ app.apptype }}</td>
+            <td>
+              <div
+                *ngIf="app.status == 'completed'; else pendingDisplay"
+                class="badge bg-primary text-white rounded-pill"
+              >
+                Completed
+              </div>
+              <ng-template #pendingDisplay
+                ><div class="badge bg-warning text-white rounded-pill">
+                  Pending
+                </div></ng-template
+              >
+            </td>
+            <td>
+              <button
+                class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="getVitals(app.id)"
+              >
+                view
+                <i data-feather="eye"></i>
+              </button>
+
+              <!-- <button
+                  (click)="getVitals(app.id)"
+                  class="btn btn-datatable btn-icon btn-transparent-dark"
+                >
+                  <i data-feather="trash-2"></i>
+                </button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Appointment Details
+                <br /><span style="font-size: 14px"
+                  >Physician: {{ physicianName | titlecase }}</span
+                >
+              </h5>
+
+              <button
+                class="btn-close"
+                type="button"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xxl-4 col-xl-6 mb-4">
+                  <h6>Vitals</h6>
+                  <div class="timeline timeline-xs">
+                    <div class="timeline-item">
+                      Blood Pressure : {{ bloodPressure }}
+                    </div>
+                    <div class="timeline-item">Height : {{ height }}</div>
+                    <div class="timeline-item">Weight : {{ weight }} kg</div>
+                    <div class="timeline-item">
+                      Temperature : {{ temperature }}
+                    </div>
+                    <div class="timeline-item">
+                      Respiration : {{ respiration }}
+                    </div>
+                    <div class="timeline-item">Pulse : {{ pulse }}</div>
+                  </div>
+                </div>
+                <div class="col-xxl-4 col-xl-6 mb-4">
+                  <h6>Diagnosis</h6>
+                  <div class="timeline timeline-xs">
+                    <div class="timeline-item">
+                      Diagnosis code : {{ diagnosis }}
+                    </div>
+                  </div>
+                  <br />
+                  <h6>Procedures</h6>
+                  <div class="timeline timeline-xs">
+                    <div class="timeline-item">
+                      Procedures code : {{ procedures }}
+                    </div>
+                  </div>
+                </div>
+                <div class="">
+                  <h6>Medications</h6>
+                  <div class="timeline timeline-xs">
+                    <div class="timeline-item">
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <td>Medicine</td>
+                              <td>Dose</td>
+                              <td>Frequency</td>
+                              <td>Days</td>
+                              <td>Notes</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let medicine of medicines">
+                              <td>{{ medicine.medication }}</td>
+                              <td>{{ medicine.dose }}</td>
+                              <td>{{ medicine.frequency }}</td>
+                              <td>{{ medicine.days }}</td>
+                              <td>{{ medicine.notes }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

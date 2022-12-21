@@ -1,0 +1,660 @@
+<div class="container-xl px-4">
+  <nav class="nav nav-borders">
+    <a
+      class="nav-link active ms-0"
+      [routerLink]="['/physician/capture', patientID, appointmentID]"
+      >Capture Details</a
+    >
+    <a
+      class="nav-link"
+      [routerLink]="['/physician/patient-details', patientID, appointmentID]"
+      >Patient Details</a
+    >
+    <a
+      class="nav-link"
+      [routerLink]="['/physician/patient-visits', patientID, appointmentID]"
+      >Patient Visits</a
+    >
+  </nav>
+  <hr class="mt-0 mb-4" />
+  <!-- Wizard card example with navigation-->
+  <div class="card">
+    <div class="card-header border-bottom">
+      <!-- Wizard navigation-->
+      <div
+        class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard"
+        id="cardTab"
+        role="tablist"
+      >
+        <!-- Wizard navigation item 1-->
+        <a
+          class="nav-item nav-link active"
+          style="padding: 0.5rem 1rem !important"
+          id="wizard1-tab"
+          href="#wizard1"
+          data-bs-toggle="tab"
+          role="tab"
+          aria-controls="wizard1"
+          aria-selected="true"
+        >
+          <div class="wizard-step-icon">1</div>
+          <div class="wizard-step-text">
+            <div class="wizard-step-text-name">Vitals</div>
+            <div class="wizard-step-text-details">Capture Patient Vitals</div>
+          </div>
+        </a>
+        <!-- Wizard navigation item 2-->
+        <a
+          class="nav-item nav-link"
+          style="padding: 0.5rem 1rem !important"
+          id="wizard2-tab"
+          href="#wizard2"
+          data-bs-toggle="tab"
+          role="tab"
+          aria-controls="wizard2"
+          aria-selected="true"
+          (click)="resetcodelist()"
+        >
+          <div class="wizard-step-icon">2</div>
+          <div class="wizard-step-text">
+            <div class="wizard-step-text-name">Diagnosis</div>
+            <div class="wizard-step-text-details">Capture Diagnosis Code</div>
+          </div>
+        </a>
+        <!-- Wizard navigation item 3-->
+        <a
+          class="nav-item nav-link"
+          style="padding: 0.5rem 1rem !important"
+          id="wizard3-tab"
+          href="#wizard3"
+          data-bs-toggle="tab"
+          role="tab"
+          aria-controls="wizard3"
+          aria-selected="true"
+          (click)="resetcodelist()"
+        >
+          <div class="wizard-step-icon">3</div>
+          <div class="wizard-step-text">
+            <div class="wizard-step-text-name">Procedures</div>
+            <div class="wizard-step-text-details">Capture Procedure code</div>
+          </div>
+        </a>
+        <!-- Wizard navigation item 4-->
+        <a
+          class="nav-item nav-link"
+          style="padding: 0.5rem 1rem !important"
+          id="wizard4-tab"
+          href="#wizard4"
+          data-bs-toggle="tab"
+          role="tab"
+          aria-controls="wizard3"
+          aria-selected="true"
+        >
+          <div class="wizard-step-icon">4</div>
+          <div class="wizard-step-text">
+            <div class="wizard-step-text-name">Medication</div>
+            <div class="wizard-step-text-details">Prescribe medications</div>
+          </div>
+        </a>
+        <!-- Wizard navigation item -->
+        <a
+          class="nav-item nav-link"
+          style="padding: 0.5rem 1rem !important"
+          id="wizard5-tab"
+          href="#wizard5"
+          data-bs-toggle="tab"
+          role="tab"
+          aria-controls="wizard5"
+          aria-selected="true"
+        >
+          <div class="wizard-step-icon">5</div>
+          <div class="wizard-step-text">
+            <div class="wizard-step-text-name">Review</div>
+            <div class="wizard-step-text-details">
+              Review and submit changes
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="tab-content" id="cardTabContent">
+        <!-- Wizard tab pane item 1-->
+        <div
+          class="tab-pane fade show active"
+          id="wizard1"
+          role="tabpanel"
+          aria-labelledby="wizard1-tab"
+        >
+          <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8">
+              <h5 class="text-primary">Step 1 - Patient Vitals</h5>
+              <form [formGroup]="vitalForm">
+                <div formGroupName="vitals">
+                  <div class="row gx-3">
+                    <div class="mb-3 col-md-6">
+                      <label class="small mb-1" for="inputBloodPressure"
+                        >Blood Pressure (mmHg)
+                      </label>
+
+                      <input
+                        class="form-control"
+                        id="inputBloodPressure"
+                        type="text"
+                        placeholder="Enter Blood Pressure"
+                        formControlName="bloodpressure"
+                        required
+                        value=""
+                      />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label class="small mb-1" for="inputPulse"
+                        >Pulse (bpm)</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputPulse"
+                        type="text"
+                        placeholder="Enter Pulse"
+                        formControlName="pulse"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <div class="row gx-3">
+                    <div class="mb-3 col-md-6">
+                      <label class="small mb-1" for="inputTemperature"
+                        >Temperature (F)</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputTemperature"
+                        type="text"
+                        placeholder="Enter Temperature"
+                        formControlName="temperature"
+                        value=""
+                      />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label class="small mb-1" for="inputRespiration"
+                        >Respiration (/min)</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputRespiration"
+                        type="text"
+                        placeholder="Enter Respiration"
+                        formControlName="respiration"
+                        value=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row gx-3">
+                    <div class="col-md-6 mb-md-0">
+                      <label class="small mb-1" for="inputHeight"
+                        >Height (inch)</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputHeight"
+                        type="text"
+                        placeholder="Enter Height"
+                        formControlName="height"
+                        value=""
+                      />
+                    </div>
+                    <div class="col-md-6 mb-0">
+                      <label class="small mb-1" for="inputWeight"
+                        >Weight (kg)</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputWeight"
+                        type="text"
+                        placeholder="Enter Weight"
+                        formControlName="weight"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <hr class="my-4" />
+                  <!-- <p>
+                    Order Value:
+                    {{ vitalForm.value | json }}
+                  </p>
+                  <p>Order Status: {{ vitalForm.status }}</p> -->
+
+                  <div class="d-flex justify-content-between">
+                    <button
+                      class="btn btn-light disabled"
+                      type="button"
+                      disabled=""
+                    >
+                      Previous
+                    </button>
+                    <button
+                      class="btn btn-primary"
+                      (click)="onbuttonclick('2')"
+                      type="button"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Wizard tab pane item 2-->
+        <div
+          class="tab-pane fade"
+          id="wizard2"
+          role="tabpanel"
+          aria-labelledby="wizard2-tab"
+        >
+          <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8">
+              <div class="card card-header-actions mb-4">
+                <div class="card-header">
+                  Step 2 - Diagnosis
+                  <button
+                    class="btn btn-sm btn-primary"
+                    (click)="addDiagnosis()"
+                    type="button"
+                  >
+                    + Add another Diagnosis
+                  </button>
+                </div>
+              </div>
+
+              <form [formGroup]="diagnosisForm">
+                <div class="row gx-3">
+                  <div formArrayName="diagnosis" class="col-md-12 mb-0">
+                    <div *ngFor="let diag of diagnosis.controls; let i = index">
+                      <label class="small mb-1" for="diagnosis-{{ i }}"
+                        >Diagnosis Code</label
+                      >
+                      <input
+                        class="form-control"
+                        id="diagnosis-{{ i }}"
+                        type="text"
+                        [formControlName]="i"
+                        placeholder="Enter Diagnosis Code"
+                        value=""
+                        list="browsers"
+                        name="browser"
+                        (keyup)="setcodes(i)"
+                      />
+                      <datalist id="browsers">
+                        <option
+                          *ngFor="let opt of listOfOptions"
+                          [value]="opt"
+                        ></option>
+                      </datalist>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row gx-3">
+                 <div class="col-md-6 mb-4 mb-md-0">
+                   <label class="small mb-1" for="inputLocation"
+                     >Lab Report</label
+                   >
+                   <input
+                     class="form-control"
+                     id="inputLocation"
+                     type="file"
+                     placeholder="Enter expiry year"
+                     value="2024"
+                   />
+                 </div>
+                 <div class="col-md-6 mb-0">
+                   <label class="small mb-1" for="inputLocation"
+                     >Radiology Report</label
+                   >
+                   <input
+                     class="form-control"
+                     id="inputLocation"
+                     type="file"
+                     placeholder="Enter CVV number"
+                     value="111"
+                   />
+                 </div>
+               </div> -->
+                <hr class="my-4" />
+                <!-- <p>Order Value: {{ diagnosisForm.value | json }}</p>
+               <p>Order Status: {{ diagnosisForm.status }}</p> -->
+                <div class="d-flex justify-content-between">
+                  <button
+                    class="btn btn-light"
+                    type="button"
+                    (click)="onbuttonclick('1')"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="onbuttonclick('3')"
+                    type="button"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Wizard tab pane item 3-->
+        <div
+          class="tab-pane fade"
+          id="wizard3"
+          role="tabpanel"
+          aria-labelledby="wizard3-tab"
+        >
+          <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8">
+              <div class="card card-header-actions mb-4">
+                <div class="card-header">
+                  Step 3 - Procedures
+                  <button
+                    class="btn btn-sm btn-primary"
+                    (click)="addProcedure()"
+                    type="button"
+                  >
+                    + Add another Procedure
+                  </button>
+                </div>
+              </div>
+              <form [formGroup]="procedureForm">
+                <div class="row gx-3">
+                  <div formArrayName="procedures" class="col-md-12 mb-0">
+                    <div
+                      *ngFor="
+                        let procedure of procedures.controls;
+                        let i = index
+                      "
+                    >
+                      <label class="small mb-1" for="procedure-{{ i }}"
+                        >Procedure Code</label
+                      >
+                      <input
+                        class="form-control"
+                        id="procedure-{{ i }}"
+                        type="text"
+                        [formControlName]="i"
+                        placeholder="Enter Procedure Code"
+                        value=""
+                        list="browsers"
+                        name="browser"
+                        (keyup)="setprocodes(i)"
+                      />
+                      <datalist id="browsers">
+                        <option
+                          *ngFor="let opt of listOfOptions"
+                          [value]="opt"
+                        ></option>
+                      </datalist>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="my-4" />
+                <!-- <p>Order Value: {{ procedureForm.value | json }}</p>
+                <p>Order Status: {{ procedureForm.status }}</p> -->
+                <div class="d-flex justify-content-between">
+                  <button
+                    class="btn btn-light"
+                    type="button"
+                    (click)="onbuttonclick('2')"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="onbuttonclick('4')"
+                    type="button"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Wizard tab pane item 4-->
+        <div
+          class="tab-pane fade"
+          id="wizard4"
+          role="tabpanel"
+          aria-labelledby="wizard4-tab"
+        >
+          <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8">
+              <div class="card card-header-actions mb-4">
+                <div class="card-header">
+                  Step 4 - Medications
+                  <button
+                    class="btn btn-sm btn-primary"
+                    (click)="addMedication()"
+                    type="button"
+                  >
+                    + Add another Medication
+                  </button>
+                </div>
+              </div>
+              <form [formGroup]="medicationForm">
+                <div formArrayName="medications">
+                  <div
+                    *ngFor="
+                      let medication of medications.controls;
+                      let i = index
+                    "
+                  >
+                    <div [formGroupName]="i">
+                      <div class="row gx-3">
+                        <div class="mb-3 col-md-6">
+                          <label class="small mb-1" for="inputBloodPressure"
+                            >Medication
+                          </label>
+
+                          <input
+                            class="form-control"
+                            id="medication-{{ i }}"
+                            type="text"
+                            formControlName="medication"
+                            placeholder="Enter Medication"
+                            value=""
+                          />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="small mb-1" for="dose-{{ i }}"
+                            >Dose</label
+                          >
+                          <input
+                            class="form-control"
+                            id="dose-{{ i }}"
+                            type="text"
+                            formControlName="dose"
+                            placeholder="Enter Dose"
+                            value=""
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row gx-3">
+                        <div class="mb-3 col-md-6">
+                          <label class="small mb-1" for="inputBloodPressure"
+                            >Frequency
+                          </label>
+
+                          <input
+                            class="form-control"
+                            id="frequency-{{ i }}"
+                            type="text"
+                            formControlName="frequency"
+                            placeholder="Enter Frequency"
+                            value=""
+                          />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="small mb-1" for="inputPulse"
+                            >No. of Days</label
+                          >
+                          <input
+                            class="form-control"
+                            id="days-{{ i }}"
+                            type="text"
+                            formControlName="days"
+                            placeholder="Enter No. of Days"
+                            value=""
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row gx-3">
+                        <div class="mb-3 col-md-12">
+                          <label class="small mb-1" for="inputBloodPressure"
+                            >Notes
+                          </label>
+
+                          <textarea
+                            class="form-control"
+                            id="notes-{{ i }}"
+                            formControlName="notes"
+                            placeholder="Enter Notes"
+                            value=""
+                          >
+                          </textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-4" />
+                  </div>
+                </div>
+
+                <hr class="my-4" />
+                <!-- <p>Order Value: {{ medicationForm.value | json }}</p>
+                <p>Order Status: {{ medicationForm.status }}</p> -->
+                <div class="d-flex justify-content-between">
+                  <button
+                    class="btn btn-light"
+                    type="button"
+                    (click)="onbuttonclick('3')"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="onbuttonclick('5')"
+                    type="button"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Wizard tab pane item 5-->
+        <div
+          class="tab-pane fade"
+          id="wizard5"
+          role="tabpanel"
+          aria-labelledby="wizard5-tab"
+        >
+          <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8">
+              <h5 class="text-primary">Step 5 - Review and Submit</h5>
+
+              <h6>Vitals</h6>
+
+              <div class="row small text-muted">
+                <div class="col-sm-12">
+                  <em>Blood Pressure:</em>
+                  {{ vitalForm.value.vitals.bloodpressure | json }},&nbsp;
+                  <em>Pulse:</em>
+                  {{ vitalForm.value.vitals.pulse | json }},&nbsp;
+                  <em>Temperature:</em>
+                  {{ vitalForm.value.vitals.temperature | json }},&nbsp;
+                  <em>Respiration:</em>
+                  {{ vitalForm.value.vitals.respiration | json }},&nbsp;
+                  <em>Height:</em>
+                  {{ vitalForm.value.vitals.height | json }},&nbsp;
+                  <em>Weight:</em>
+                  {{ vitalForm.value.vitals.weight | json }}
+                </div>
+              </div>
+              <hr />
+              <h6>Diagnosis</h6>
+              <div>
+                <div
+                  *ngFor="let val of diagnosisForm.value.diagnosis"
+                  class="row small"
+                >
+                  <div class="col-sm-12">
+                    <p>{{ val | json }}</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <h6>Procedures</h6>
+              <div>
+                <div
+                  *ngFor="let val of procedureForm.value.procedures"
+                  class="row small"
+                >
+                  <div class="col-sm-12">
+                    <p>{{ val | json }}</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <h6>Medications</h6>
+              <div class="table-responsive table-bordered">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Medication</th>
+                      <th scope="col">Dose</th>
+                      <th scope="col">Frequency</th>
+                      <th scope="col">days</th>
+                      <th scope="col">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let val of medicationForm.value.medications">
+                      <td>{{ val.medication | json }}</td>
+                      <td>{{ val.dose | json }}</td>
+                      <td>{{ val.frequency | json }}</td>
+                      <td>{{ val.days | json }}</td>
+                      <td>{{ val.notes | json }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <hr class="my-4" />
+              <div class="d-flex justify-content-between">
+                <button
+                  (click)="onbuttonclick('4')"
+                  class="btn btn-light"
+                  type="button"
+                >
+                  Previous
+                </button>
+                <button
+                  class="btn btn-primary"
+                  (click)="submitForm()"
+                  type="button"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

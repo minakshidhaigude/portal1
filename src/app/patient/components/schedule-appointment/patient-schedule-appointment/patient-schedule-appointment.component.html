@@ -1,0 +1,242 @@
+<div class="container-xl px-4 mt-4">
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Change password card-->
+      <div class="card mb-4">
+        <div class="card-body">
+          <form>
+            <div class="row text-center">
+              <div class="col-md-4">
+                <div class="btn-group prv-next">
+                  <div
+                    class="btn btn-primary"
+                    mwlCalendarPreviousView
+                    [view]="view"
+                    [(viewDate)]="viewDate"
+                    (viewDateChange)="closeOpenMonthViewDay()"
+                    (click)="decrement()"
+                  >
+                    Previous
+                  </div>
+                  <div
+                    class="btn btn-outline-secondary"
+                    mwlCalendarToday
+                    [(viewDate)]="viewDate"
+                    (click)="today()"
+                  >
+                    Today
+                  </div>
+                  <div
+                    class="btn btn-primary"
+                    mwlCalendarNextView
+                    [view]="view"
+                    [(viewDate)]="viewDate"
+                    (viewDateChange)="closeOpenMonthViewDay()"
+                  >
+                    Next
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <h3>
+                  {{ viewDate | calendarDate: view + "ViewTitle":"en" }}
+                </h3>
+              </div>
+              <!-- <div class="col-md-4">
+                  <div class="btn-group btn-month-week-day">
+                    <div
+                      class="btn btn-primary"
+                      (click)="setView(CalendarView.Month)"
+                      [class.active]="view === CalendarView.Month"
+                    >
+                      Month
+                    </div>
+               
+                  <div
+                      class="btn btn-primary"
+                      (click)="setView(CalendarView.Week)"
+                      [class.active]="view === CalendarView.Week"
+                    >
+                      Week
+                    </div>
+                    <div
+                      class="btn btn-primary"
+                      (click)="setView(CalendarView.Day)"
+                      [class.active]="view === CalendarView.Day"
+                    >
+                      Day
+                    </div>
+                  </div>
+                </div> -->
+            </div>
+            <br />
+
+            <div [ngSwitch]="view">
+              <mwl-calendar-month-view
+                *ngSwitchCase="CalendarView.Month"
+                [viewDate]="viewDate"
+                [events]="events"
+                [refresh]="refresh"
+                [activeDayIsOpen]="activeDayIsOpen"
+                (dayClicked)="dayClicked($event.day)"
+                (eventClicked)="handleEvent('Clicked', $event.event)"
+                (eventTimesChanged)="eventTimesChanged($event)"
+                (beforeViewRender)="beforeMonthViewRender($event)"
+              >
+              </mwl-calendar-month-view>
+              <mwl-calendar-week-view
+                *ngSwitchCase="CalendarView.Week"
+                [viewDate]="viewDate"
+                [events]="events"
+                [refresh]="refresh"
+                (eventClicked)="handleEvent('Clicked', $event.event)"
+                (eventTimesChanged)="eventTimesChanged($event)"
+              >
+              </mwl-calendar-week-view>
+              <mwl-calendar-day-view
+                *ngSwitchCase="CalendarView.Day"
+                [viewDate]="viewDate"
+                [events]="events"
+                [refresh]="refresh"
+                (eventClicked)="handleEvent('Clicked', $event.event)"
+                (eventTimesChanged)="eventTimesChanged($event)"
+              >
+              </mwl-calendar-day-view>
+            </div>
+
+            <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
+            <br /><br /><br />
+
+            <ng-template #modalBookappoinment let-close="close">
+              <div class="modal-header">
+                <h5 class="modal-title">Book Appointment</h5>
+                <button type="button" class="close" (click)="close()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="bookappointmentForm" (ngSubmit)="onSubmit()">
+                  <div class="row mb-3">
+                    <input formControlName="appointmentid" type="hidden" />
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                      <label>Physician</label>
+
+                      <select
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.physicianid.errors
+                        }"
+                        formControlName="physicianid"
+                        required
+                      >
+                        <option
+                          [ngValue]=""
+                          selected="true"
+                          disabled="disabled"
+                        >
+                          Select Physician
+                        </option>
+
+                        <option
+                          [ngValue]="phys.id"
+                          *ngFor="let phys of physician"
+                        >
+                          {{ phys.fname }} {{ phys.lname }} -
+                          {{ phys.speciality }}
+                        </option>
+                      </select>
+                      <div
+                        *ngIf="submitted && f.physicianid.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.physicianid.errors.required">
+                          Select Physician
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
+                      <label>Date</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="start"
+                        value=""
+                        formControlName="date"
+                        mwlFlatpickr
+                        [altInput]="true"
+                        [enableTime]="true"
+                        dateFormat="Y-m-d H:i"
+                        altFormat="Y-m-d H:i"
+                        minDate="today"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.date.errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f.date.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.date.errors.required">
+                          Date is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p></p>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <button type="submit" class="btn btn-primary me-2 my-1">
+                        Book Appointment
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  (click)="close()"
+                >
+                  OK
+                </button>
+              </div>
+            </ng-template>
+
+            <ng-template #modalContent let-close="close">
+              <div class="modal-header">
+                <h5 class="modal-title">Event action occurred</h5>
+                <button type="button" class="close" (click)="close()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  Action:
+                  <pre>{{ modalData?.action }}</pre>
+                </div>
+                <div>
+                  Event:
+                  <pre>{{ modalData?.event | json }}</pre>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  (click)="close()"
+                >
+                  OK
+                </button>
+              </div>
+            </ng-template>
+          </form>
+        </div>
+      </div>
+      <!-- Security preferences card-->
+    </div>
+  </div>
+</div>

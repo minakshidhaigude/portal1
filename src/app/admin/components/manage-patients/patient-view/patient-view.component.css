@@ -1,0 +1,18 @@
+#datatableID {
+  border: 1px solid #e0e5ec;
+  border-collapse: none;
+}
+thead {
+  border: 1px solid #e0e5ec;
+}
+.form-check {
+  padding-left: 3.25rem !important;
+}
+.table-bordered {
+  border: 0px !important;
+}
+table.dataTable thead th,
+table.dataTable thead td {
+  padding: 10px 18px;
+  border-bottom: 0px solid #dee2e6;
+}

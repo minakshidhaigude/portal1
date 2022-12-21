@@ -1,0 +1,602 @@
+<div class="container-xl px-4">
+  <div class="sbp-preview-code">
+    <!-- Code sample-->
+    <ul class="nav nav-tabs" id="badgeExtendedTabs" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active me-1"
+          id="badgeExtendedHtmlTab"
+          data-bs-toggle="tab"
+          href="#demographicscontent"
+          role="tab"
+          aria-controls="badgeExtendedHtml"
+          aria-selected="true"
+        >
+          Demographics
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="badgeExtendedPugTab"
+          data-bs-toggle="tab"
+          href="#medicationcontent"
+          role="tab"
+          aria-controls="badgeExtendedPug"
+          aria-selected="false"
+        >
+          Medication & Allergies
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="badgeExtendedPugTab"
+          data-bs-toggle="tab"
+          href="#immunizationcontent"
+          role="tab"
+          aria-controls="badgeExtendedPug"
+          aria-selected="false"
+        >
+          Immunization
+        </a>
+      </li>
+    </ul>
+
+    <!-- Tab header links ends -->
+
+    <div class="tab-content">
+      <div
+        class="tab-pane active"
+        id="demographicscontent"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedHtmlTab"
+      >
+        <div class="">
+          <div class="card mb-4">
+            <div class="card-body">
+              <!-- Form started -->
+              <form
+                [formGroup]="demographicsForm"
+                (ngSubmit)="demographicsSubmit()"
+              >
+                <div class="d-block invalid-feedback text-center">
+                  {{ errors.error }}
+                </div>
+
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputfname"
+                      >First name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputfname"
+                      type="text"
+                      placeholder="Enter First Name"
+                      formControlName="fname"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputlname">Last name</label>
+                    <input
+                      class="form-control"
+                      id="inputlname"
+                      type="text"
+                      placeholder="Enter Last name"
+                      formControlName="lname"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputdob"
+                      >DOB(MM/DD/YYYY)</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputdob"
+                      type="date"
+                      placeholder="Enter DOB"
+                      formControlName="dob"
+                      min="1900-01-01"
+                      max="2021-09-28"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputgender">Gender</label>
+                    <input
+                      class="form-control"
+                      id="inputgender"
+                      type="text"
+                      placeholder="Enter Gender"
+                      formControlName="gender"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputethnicity"
+                      >Ethnicity/Race</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputethnicity"
+                      type="test"
+                      placeholder=" American/Asian/African American etc"
+                      formControlName="ethnicity"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputeducation">
+                      Education
+                    </label>
+
+                    <input
+                      class="form-control"
+                      id="inputeducation"
+                      type="text"
+                      placeholder="Enter education"
+                      formControlName="education"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputoccupation"
+                      >Occupation/Employment</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputoccupation"
+                      type="text"
+                      placeholder="Enter job/ Profession"
+                      formControlName="occupation"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputaddress">Address</label>
+                    <input
+                      class="form-control"
+                      id="inputaddress"
+                      type="text"
+                      placeholder="Enter primary address"
+                      formControlName="address"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputcontact">Contact</label>
+                    <input
+                      class="form-control"
+                      id="inputcontact"
+                      type="text"
+                      placeholder="Enter contact number"
+                      formControlName="contact"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputprovider"
+                      >Provider</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputprovider"
+                      type="text"
+                      placeholder="Enter provider"
+                      formControlName="provider"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputmedicaldata"
+                      >Medical data</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputmedicaldata"
+                      type="text"
+                      placeholder="Past medical history of the Patient"
+                      formControlName="medicalData"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputfamilymedicaldata"
+                      >Family medical data</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputfamilymedicaldata"
+                      type="text"
+                      placeholder="Enter family medical data"
+                      formControlName="familymedicalData"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputsurgeries"
+                      >Surgeries</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputsurgeries"
+                      type="text"
+                      placeholder="If any surgeries performed in past"
+                      formControlName="surgeries"
+                    />
+                  </div>
+                </div>
+
+                <!-- Form elements completed -->
+
+                <!-- Button started-->
+
+                <div class="text-center m-auto">
+                  <button
+                    class="btn btn-primary text-center"
+                    type="submit"
+                    *ngIf="success == false"
+                    onclick="alert('Patient record created successfully')"
+                  >
+                    Submit
+                  </button>
+
+                  <button
+                    class="btn btn-primary text-center"
+                    type="submit"
+                    *ngIf="success == true"
+                    onclick="alert('Patient details updated successfully')"
+                  >
+                    Update
+                  </button>
+                </div>
+                <!-- Button ends -->
+              </form>
+              <!-- Form ended -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demographics ends -->
+
+      <!-- Medication and allergies starts -->
+
+      <div
+        class="tab-pane"
+        id="medicationcontent"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedPugTab"
+      >
+        <div class="">
+          <div class="card mb-4">
+            <div class="card-body">
+              <!-- Form started -->
+              <form
+                [formGroup]="medicationallergiesForm"
+                (ngSubmit)="medicationallergiesSubmit()"
+              >
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="drugallergy">
+                      Drug Allergies
+                    </label>
+                    <input
+                      class="form-control"
+                      id="drugallergy"
+                      type="text"
+                      placeholder="Enter drug allergies"
+                      formControlName="drugallergies"
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="drugreaction">
+                      Drug reaction
+                    </label>
+                    <input
+                      class="form-control"
+                      id="drugreaction"
+                      type="text"
+                      placeholder="Enter drug reaction"
+                      formControlName="drugreaction"
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="socialdrugs">
+                      Social drugs
+                    </label>
+                    <input
+                      class="form-control"
+                      id="socialdrugs"
+                      type="text"
+                      placeholder="Enter social drugs"
+                      formControlName="socialdrugs"
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="herbsdetails"
+                      >Herbs/Vitamin/Minerals/Antibiotics</label
+                    >
+                    <input
+                      class="form-control"
+                      id="herbsdetails"
+                      type="text"
+                      placeholder="Enter Herbs details"
+                      formControlName="herbsdetails"
+                    />
+                  </div>
+                  <!-- Row strted -->
+                  <div formGroupName="Prescribeddrugs" class="m-0">
+                    <p class="medium text-primary">Prescribed drug details</p>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="pdrugname" class="small mb-1"
+                          >Drug Name</label
+                        >
+                        <input
+                          type="text"
+                          id="pdrugname"
+                          class="form-control"
+                          placeholder="Enter drug name"
+                          formControlName="pdrugname"
+                        />
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="pstrength" class="small mb-1"
+                          >Drug Strength:</label
+                        >
+                        <input
+                          id="pstrength"
+                          type="text"
+                          formControlName="pstrength"
+                          placeholder="Enter drug strength"
+                          class="form-control"
+                        />
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="pconsume" class="small mb-1"
+                          >Directions to Consume:
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pconsume"
+                          type="text"
+                          placeholder="Enter directions to consume"
+                          formControlName="pconsume"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 1st row  completed -->
+                  <!-- 2nd row started -->
+
+                  <div formGroupName="otcdrugs">
+                    <p class="medium text-primary">OTC</p>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="odrugname" class="small mb-1"
+                          >Drug Name</label
+                        >
+                        <input
+                          type="text"
+                          id="odrugname"
+                          class="form-control"
+                          placeholder="Enter drug name"
+                          formControlName="odrugname"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="ostrength" class="small mb-1"
+                          >Drug Strength:</label
+                        >
+                        <input
+                          id="ostrength"
+                          type="text"
+                          formControlName="ostrength"
+                          placeholder="Enter drug strength"
+                          class="form-control"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="oconsume" class="small mb-1"
+                          >Directions to Consume:
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="oconsume"
+                          type="text"
+                          placeholder="Enter direction to consume"
+                          formControlName="oconsume"
+                        />
+                      </div>
+                    </div>
+                    <!-- 2nd row completed -->
+                  </div>
+
+                  <!-- 3rd row started -->
+
+                  <div formGroupName="Pastmedication">
+                    <p class="medium text-primary">Past Medication</p>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="pmdrugname" class="small mb-1"
+                          >Drug Name</label
+                        >
+                        <input
+                          type="text"
+                          id="pmdrugname"
+                          class="form-control"
+                          placeholder="Enter drug name"
+                          formControlName="pmdrugname"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="pmstrength" class="small mb-1"
+                          >Drug Strength:</label
+                        >
+                        <input
+                          id="pmstrength"
+                          type="text"
+                          formControlName="pmstrength"
+                          placeholder="Enter drug strength"
+                          class="form-control"
+                        />
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="pmconsume" class="small mb-1"
+                          >Directions to Consume:
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pmconsume"
+                          type="text"
+                          placeholder="Enter directions to consume"
+                          formControlName="pmconsume"
+                        />
+                      </div>
+                    </div>
+                    <!-- 3rd row completed -->
+                  </div>
+
+                  <div class="text-center m-auto">
+                    <button
+                      class="btn btn-primary mt-3 text-center"
+                      type="submit"
+                      *ngIf="success == false"
+                      onclick="alert('Patient record created successfully')"
+                    >
+                      Submit
+                    </button>
+                    <br />
+                    <button
+                      class="btn btn-primary text-center"
+                      type="submit"
+                      *ngIf="success == true"
+                      onclick="alert('Patient details updated successfully')"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- medication and allergies ends -->
+
+      <!-- immunization starts -->
+      <div
+        class="tab-pane"
+        id="immunizationcontent"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedPugTab"
+      >
+        <div class="">
+          <div class="card mb-4">
+            <div class="card-body">
+              <form
+                [formGroup]="immunizationForm"
+                (ngSubmit)="demographicsSubmit()"
+              >
+                <div class="d-block invalid-feedback text-center">
+                  {{ errors.error }}
+                </div>
+
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputvname"
+                      >Vaccine name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputvname"
+                      type="text"
+                      placeholder="Enter vaccine Name"
+                      formControlName="vname"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputvdate"
+                      >Vaccination Date</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputvdate"
+                      type="date"
+                      placeholder="Enter vaccination date"
+                      formControlName="vdate"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputvname"
+                      >General Vaccine Name</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputvname"
+                      type="text"
+                      placeholder="Enter general vaccine Name"
+                      formControlName="gvname"
+                    />
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <label class="small mb-1" for="inputvname"
+                      >Vaccination Date</label
+                    >
+                    <input
+                      class="form-control"
+                      id="inputvdate"
+                      type="date"
+                      placeholder="Enter general gaccination date"
+                      formControlName="gvdate"
+                    />
+                  </div>
+                </div>
+
+                <div class="text-center m-auto">
+                  <button
+                    class="btn btn-primary text-center"
+                    type="submit"
+                    *ngIf="success == false"
+                    onclick="alert('Patient record created successfully')"
+                  >
+                    Submit
+                  </button>
+
+                  <button
+                    class="btn btn-primary text-center"
+                    type="submit"
+                    *ngIf="success == true"
+                    onclick="alert('Patient details updated successfully')"
+                  >
+                    Update
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

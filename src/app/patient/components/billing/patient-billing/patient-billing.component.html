@@ -1,0 +1,166 @@
+<!-- Main page content-->
+<div class="container-xl px-4 mt-4">
+  <div class="row">
+    <!-- Invoice-->
+    <div
+      id="toBePrinted"
+      class="card invoice mb-4"
+      *ngIf="item.order_id != undefined"
+    >
+      <div
+        class="
+          card-header
+          p-4 p-md-5
+          border-bottom-0
+          bg-gradient-primary-to-secondary
+          text-white-50
+        "
+      >
+        <div class="row justify-content-between align-items-center">
+          <div
+            class="col-12 col-lg-auto mb-5 mb-lg-0 text-center text-lg-start"
+          >
+            <!-- Invoice branding-->
+            <div class="h2 text-white mb-0">Billing details</div>
+          </div>
+          <div class="col-12 col-lg-auto text-center text-lg-end">
+            <!-- Invoice details-->
+            <div class="h3 text-white">Invoice</div>
+            {{ item.order_id }}
+            <br />
+            {{ item.created_date }}
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-4 p-md-5">
+        <!-- Invoice table-->
+        <div class="table-responsive">
+          <table class="table table-borderless mb-0">
+            <thead class="border-bottom">
+              <tr class="small text-uppercase text-muted">
+                <th scope="col">Description</th>
+                <th class="text-end" scope="col">Hours</th>
+                <th class="text-end" scope="col">Rate</th>
+                <th class="text-end" scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Invoice item 1-->
+              <tr
+                class="border-bottom"
+                *ngFor="let invoiceItem of item.invoices"
+              >
+                <td>
+                  <div class="fw-bold">{{ invoiceItem.name }}</div>
+                  <div class="small text-muted d-md-block">
+                    {{ invoiceItem.description }}
+                  </div>
+                </td>
+                <td class="text-end fw-bold">{{ invoiceItem.hours }}</td>
+                <td class="text-end fw-bold">{{ invoiceItem.rate }}</td>
+                <td class="text-end fw-bold">{{ invoiceItem.amt }}</td>
+              </tr>
+              <!-- Invoice subtotal-->
+              <tr>
+                <td class="text-end pb-0" colspan="3">
+                  <div class="text-uppercase small fw-700 text-muted">
+                    Subtotal:
+                  </div>
+                </td>
+                <td class="text-end pb-0">
+                  <div class="h5 mb-0 fw-700">{{ item.subTotal }}</div>
+                </td>
+              </tr>
+              <!-- Invoice tax column-->
+              <tr class="d-none">
+                <td class="text-end pb-0" colspan="3">
+                  <div class="text-uppercase small fw-700 text-muted">
+                    Tax ({{ item.taxPercent }}):
+                  </div>
+                </td>
+                <td class="text-end pb-0">
+                  <div class="h5 mb-0 fw-700">{{ item.taxAmt }}</div>
+                </td>
+              </tr>
+              <!-- Invoice total-->
+              <tr>
+                <td class="text-end pb-0" colspan="3">
+                  <div class="text-uppercase small fw-700 text-muted">
+                    Total Amount:
+                  </div>
+                </td>
+                <td class="text-end pb-0">
+                  <div class="h5 mb-0 fw-700 text-green">
+                    {{ item.totalAmt }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center pb-0" colspan="4">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    (click)="initPay(item.totalAmt, item.order_id)"
+                    *ngIf="item.amount_due != 0"
+                  >
+                    Make Payment
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    onclick="window.print()"
+                    *ngIf="item.amount_due == 0"
+                  >
+                    Print
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Billing history card-->
+    <div class="card mb-4">
+      <div class="card-header">Billing History</div>
+      <div class="card-body p-0">
+        <!-- Billing history table-->
+        <div class="table-responsive table-billing-history">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th class="border-gray-200" scope="col">Transaction ID</th>
+                <th class="border-gray-200" scope="col">Date</th>
+                <th class="border-gray-200" scope="col">Amount</th>
+                <th class="border-gray-200" scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="select-row"
+                *ngFor="let item of allList"
+                (click)="handleClick(item.order_id)"
+              >
+                <td>{{ item.order_id }}</td>
+                <td>{{ item.created_date }}</td>
+                <td>{{ item.totalAmt }}</td>
+                <td>
+                  <span
+                    class="badge bg-light text-dark"
+                    *ngIf="item.amount_due > 0"
+                    >Pending</span
+                  >
+                  <span
+                    class="badge bg-light text-dark"
+                    *ngIf="item.amount_due == 0"
+                    >Paid</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

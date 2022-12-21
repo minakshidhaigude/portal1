@@ -1,0 +1,17 @@
+<div id="layoutSidenav">
+  <app-leftsidebar></app-leftsidebar>
+
+  <!-- MAIN CONTENT -->
+  <div id="layoutSidenav_content">
+    <main>
+      <app-phy-header></app-phy-header>
+      <router-outlet></router-outlet>
+      <!-- <app-phy-main-content
+        *ngIf="myappointments"
+        [apps]="myappointments"
+      ></app-phy-main-content> -->
+    </main>
+
+    <app-phy-footer></app-phy-footer>
+  </div>
+</div>

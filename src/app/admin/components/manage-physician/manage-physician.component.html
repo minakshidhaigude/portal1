@@ -1,0 +1,43 @@
+<div class="container-fluid px-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+          class="table table-bordered"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Physican Name</th>
+              <th style="background: none">Contact No</th>
+              <th style="background: none">Email Id</th>
+              <th style="background: none">Speciality</th>
+              <!-- <th style="background: none">Appointment</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let user of data; index as i">
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td>
+                  {{ user.fname + " " + user.lname | titlecase }}
+                </td>
+                <td>{{ user.mobile }}</td>
+                <td>
+                  <a href="mailto:user.email">{{ user.email }}</a>
+                </td>
+                <td>{{ user.speciality | titlecase }}</td>
+                <!-- <td></td> -->
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

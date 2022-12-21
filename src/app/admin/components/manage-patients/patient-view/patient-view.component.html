@@ -1,0 +1,562 @@
+<header
+  class="
+    page-header page-header-compact page-header-light
+    border-bottom
+    bg-white
+    mb-4
+  "
+>
+  <div class="container-xl px-4">
+    <button
+      id="openModalButton"
+      [hidden]="true"
+      data-toggle="modal"
+      data-target="#myModal"
+    >
+      Open Modal
+    </button>
+    <div id="myModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-between pt-3">
+      <div class="col-auto mb-3">
+        <h6>
+          Patient Name :
+          <span style="color: grey">{{
+            data1.fname + " " + data1.lname | titlecase
+          }}</span>
+        </h6>
+        <h6>
+          Patient Id : <span style="color: grey">#{{ pid }}</span>
+        </h6>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid px-4">
+  <div class="sbp-preview-code">
+    <ul class="nav nav-tabs" id="badgeExtendedTabs" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active me-1"
+          id="badgeExtendedPugTab"
+          data-bs-toggle="tab"
+          href="#badgeExtendedPug"
+          role="tab"
+          aria-controls="badgeExtendedPug"
+          aria-selected="false"
+        >
+          Demographics
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="badgeExtendedPugMedication"
+          data-bs-toggle="tab"
+          href="#badgeExtendedMedication"
+          role="tab"
+          aria-controls="badgeExtendedMedication"
+          aria-selected="false"
+        >
+          Medication & Allergies
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          id="badgeExtendedPugImmunization"
+          data-bs-toggle="tab"
+          href="#badgeExtendedImmunization"
+          role="tab"
+          aria-controls="badgeExtendedImmunization"
+          aria-selected="false"
+        >
+          Immunization
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div
+        class="tab-pane active"
+        id="badgeExtendedPug"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedPugTab"
+      >
+        <div class="">
+          <div class="card mb-4">
+            <div class="card-body">
+              <form [formGroup]="updatePatientForm">
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputFirstName"
+                        >First name</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="fname"
+                        id="inputFirstName"
+                        type="text"
+                        [readonly]="true"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['fname'].errors?.required
+                        "
+                      >
+                        *First name is required
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputLastName"
+                        >Last name</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="lname"
+                        id="inputLastName"
+                        type="text"
+                        placeholder="Enter your last name"
+                        [readonly]="true"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['lname'].errors?.required
+                        "
+                      >
+                        *Last name is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputDob">DOB</label>
+                      <input
+                        class="form-control"
+                        formControlName="pdob"
+                        id="inputDob"
+                        type="date"
+                        aria-describedby="dateHelp"
+                        [readonly]="true"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['pdob'].errors?.required
+                        "
+                      >
+                        *DOB is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1">Gender</label>
+                      <input
+                        class="form-control"
+                        formControlName="pgender"
+                        [readonly]="true"
+                      />
+                      <!-- <select
+                        class="form-select"
+                        aria-label="gender select"
+                        formControlName="pgender"
+                      >
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select> -->
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['pgender'].errors?.required
+                        "
+                      >
+                        *Gender is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1">Ethnicity/Race</label>
+                      <select
+                        class="form-select"
+                        aria-label="ethnicity select"
+                        formControlName="pethnicity"
+                      >
+                        <option value="American">American</option>
+                        <option value="Asian">Asian</option>
+                        <option value="African American">
+                          African American
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientOccupation"
+                        >Occupation</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="poccupation"
+                        id="patientOccupation"
+                        type="text"
+                        placeholder="Enter your Occupation"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['poccupation'].errors
+                            ?.required
+                        "
+                      >
+                        *Occupation details is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientAddress"
+                        >Address</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="paddress"
+                        id="patientAddress"
+                        type="textarea"
+                        placeholder="Enter your address"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['paddress'].errors
+                            ?.required
+                        "
+                      >
+                        *Address is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientContact"
+                        >Contact No</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="pmobileno"
+                        id="patientContact"
+                        type="text"
+                        placeholder="Enter your contact no"
+                        [readonly]="true"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['pmobileno'].errors
+                            ?.required
+                        "
+                      >
+                        *Contact number is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientHistory"
+                        >Medical History</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="pmedicalhistory"
+                        id="patientHistory"
+                        type="text"
+                        placeholder="Enter your medical history"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['pmedicalhistory'].errors
+                            ?.required
+                        "
+                      >
+                        *Patient medical history is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientFamilyHistory"
+                        >Family Medical History</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="fmedicalhistory"
+                        id="patientFamilyHistory"
+                        type="text"
+                        placeholder="Enter your family medical history"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['fmedicalhistory'].errors
+                            ?.required
+                        "
+                      >
+                        *Family medical history is required
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientSurgeries"
+                        >Surgeries</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="psurgeries"
+                        id="patientSurgeries"
+                        type="text"
+                        placeholder="Enter your surgery history"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="small mb-1" for="patientProvider"
+                        >Insurance Provider</label
+                      >
+                      <input
+                        class="form-control"
+                        formControlName="pprovider"
+                        id="patientProvider"
+                        type="text"
+                        placeholder="Enter your insurance provider"
+                      />
+                      <span
+                        class="warning"
+                        *ngIf="
+                          updatePatientForm.controls['pprovider'].errors
+                            ?.required
+                        "
+                      >
+                        *Provider details required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit button-->
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="updatePatientDemographics()"
+                >
+                  Save changes
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane"
+        id="badgeExtendedMedication"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedMedicationTab"
+      >
+        <div class="">
+          <div class="card mb-4">
+            <!-- <div class="card-header">Medication & Allergies</div> -->
+            <div class="card-body">
+              <form [formGroup]="patientMedicationForm">
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="drugAllergies"
+                      >Drug Allergies</label
+                    >
+                    <input
+                      class="form-control"
+                      formControlName="drugAllergies"
+                      id="drugAllergies"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="socialDrugs"
+                      >Social Drugs</label
+                    >
+                    <input
+                      class="form-control"
+                      formControlName="socialDrugs"
+                      id="socialDrugs"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="herbAllergies"
+                      >Herbs/Vitamin/Minerals/Antibiotics</label
+                    >
+                    <input
+                      class="form-control"
+                      formControlName="herbAllergies"
+                      id="herbAllergies"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="otherAllergies"
+                      >Other Allergies</label
+                    >
+                    <input
+                      class="form-control"
+                      formControlName="otherAllergies"
+                      id="otherAllergies"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xxl-4 col-xl-6 mb-4">
+                    <h6>Over the Counter Medications</h6>
+                    <div class="timeline timeline-xs">
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Drug : </span>
+                        {{ otcDrug | titlecase }}
+                      </div>
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Strength : </span
+                        >{{ otcDrugStrength | titlecase }}
+                      </div>
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Direction : </span>
+                        {{ otcDrugConsume | titlecase }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-4 col-xl-6 mb-4">
+                    <h6>Current Medications</h6>
+                    <div class="timeline timeline-xs">
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Drug : </span>
+                        {{ currentDrug | titlecase }}
+                      </div>
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Strength : </span
+                        >{{ currentDrugStrength | titlecase }}
+                      </div>
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Direction : </span>
+                        {{ currentDrugConsume | titlecase }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-4 col-xl-6 mb-4">
+                    <h6>Past Prescribed Medications</h6>
+                    <div class="timeline timeline-xs">
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Drug : </span>
+                        {{ pastDrug | titlecase }}
+                      </div>
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Strength : </span
+                        >{{ pastDrugStrength | titlecase }}
+                      </div>
+                      <div class="timeline-item small mb-1">
+                        <span style="font-weight: bold">Direction : </span>
+                        {{ pastDrugConsume | titlecase }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="updatePatientMedication()"
+                >
+                  Save changes
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane"
+        id="badgeExtendedImmunization"
+        role="tabpanel"
+        aria-labelledby="badgeExtendedImmunizationTab"
+      >
+        <div class="">
+          <div class="card mb-4">
+            <div class="card-body">
+              <form [formGroup]="patientImmunizationForm">
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-12">
+                    <div class="timeline-item small mb-1">
+                      <span style="font-weight: bold">Covid Vaccine : </span
+                      >{{ vaccineName | titlecase }}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="firstDoseDate"
+                      >1<sup>st</sup> Dose</label
+                    >
+                    <input
+                      class="form-control"
+                      formControlName="firstDoseDate"
+                      type="date"
+                      id="firstDoseDate"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="secondDoseDate"
+                      >2<sup>nd</sup>Dose</label
+                    >
+                    <input
+                      class="form-control"
+                      id="secondDoseDate"
+                      type="date"
+                      formControlName="secondDoseDate"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="generalVaccines"
+                      >General Vaccines</label
+                    >
+                    <input
+                      class="form-control"
+                      id="generalVaccines"
+                      type="textarea"
+                      formControlName="generalVaccines"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="updatePatientImmunization()"
+                >
+                  Save changes
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

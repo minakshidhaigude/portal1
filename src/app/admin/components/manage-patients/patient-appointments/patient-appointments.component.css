@@ -1,0 +1,20 @@
+
+.form-check {
+    padding-left: 3.25rem !important;
+  }
+  
+  table thead th,
+  table thead td {
+    padding: 10px 18px;
+    border-bottom: 1px solid #e0e5ec !important;
+  }
+  table td {
+    border-bottom: 1px solid #e0e5ec !important;
+  }
+  table.dataTable.no-footer {
+    border-bottom: 1px solid #e0e5ec !important;
+  }
+  table.dataTable{
+    border-collapse: collapse !important;
+  }
+  

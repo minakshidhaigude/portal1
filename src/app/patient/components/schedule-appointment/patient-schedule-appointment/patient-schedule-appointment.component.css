@@ -1,0 +1,27 @@
+.pull-right {
+  float: right;
+}
+.btn-info,
+.btn-info:hover,
+.btn-info:active,
+.btn-info:visited,
+.btn-info:focus {
+  color: #fff !important;
+}
+
+.cal-disabled {
+  background-color: #eee;
+  pointer-events: none;
+}
+
+.cal-disabled .cal-day-number {
+  opacity: 0.1;
+}
+
+.cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color: #cbffde;
+}
+.form-control,
+.dataTable-input {
+  padding: 2px !important;
+}
